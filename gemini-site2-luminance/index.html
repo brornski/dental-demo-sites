@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luminance Smile Design | Cosmetic Dentistry Manhattan</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2D1B69',     // Deep Purple
+                        secondary: '#E879A8',   // Soft Pink
+                        accent: '#C07C88',      // Rose Gold
+                        base: '#FDF8FA',        // Ultra-light pinkish white
+                        surface: '#FFFFFF'
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(232, 121, 168, 0.15)',
+                        'luxury': '0 20px 40px -10px rgba(45, 27, 105, 0.08)',
+                        'hover': '0 25px 50px -12px rgba(232, 121, 168, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        /* Glassmorphism Utilities */
+        .glass-nav {
+            background: rgba(253, 248, 250, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(232, 121, 168, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Marquee Animation */
+        .marquee-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+        }
+        .marquee-wrapper::before,
+        .marquee-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+        }
+        .marquee-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, #FDF8FA 0%, transparent 100%);
+        }
+        .marquee-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, #FDF8FA 0%, transparent 100%);
+        }
+        .marquee-content {
+            display: inline-flex;
+            animation: marquee 30s linear infinite;
+        }
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Image Gradients */
+        .rose-gradient-text {
+            background: linear-gradient(135deg, #2D1B69 0%, #C07C88 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #E879A8 0%, #C07C88 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #C07C88 0%, #2D1B69 100%);
+            box-shadow: 0 10px 25px -5px rgba(232, 121, 168, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-base text-primary font-sans antialiased overflow-x-hidden selection:bg-secondary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="text-2xl group-hover:scale-110 transition-transform duration-300">✨</span>
+                <span class="text-xl font-bold tracking-tight text-primary">Luminance<span class="text-accent font-light italic"> Smile Design</span></span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#services" class="hover:text-secondary transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-secondary transition-colors">Gallery</a>
+                <a href="#testimonials" class="hover:text-secondary transition-colors">Reviews</a>
+                <a href="#booking" class="btn-gradient text-white px-6 py-2.5 rounded-full shadow-lg font-semibold tracking-wide">Book Online</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-primary focus:outline-none">
+                ☰
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-base/95 backdrop-blur-xl border-b border-secondary/20 shadow-lg">
+            <div class="flex flex-col px-6 py-4 gap-4 text-center font-medium">
+                <a href="#services" class="mobile-link text-primary hover:text-secondary py-2 border-b border-secondary/10">Services</a>
+                <a href="#gallery" class="mobile-link text-primary hover:text-secondary py-2 border-b border-secondary/10">Gallery</a>
+                <a href="#testimonials" class="mobile-link text-primary hover:text-secondary py-2 border-b border-secondary/10">Reviews</a>
+                <a href="#booking" class="mobile-link btn-gradient text-white px-6 py-3 rounded-full mx-auto w-full max-w-[200px] mt-2 shadow-lg">Book Online</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-28 pb-16 flex items-center overflow-hidden">
+        <!-- Background Blur Orbs -->
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-accent/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            
+            <div class="space-y-8 reveal relative z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm font-semibold text-primary shadow-sm border border-secondary/30">
+                    <span>📍</span> Manhattan, NY | Luxury Dental Studio
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+                    Redefining <br>
+                    Your <span class="rose-gradient-text italic pr-2">Radiance</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-primary/80 max-w-lg leading-relaxed font-light">
+                    Experience the pinnacle of cosmetic dentistry. Bespoke smile makeovers designed with artistry, cutting-edge technology, and unparalleled comfort.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#booking" class="btn-gradient text-white text-center px-8 py-4 rounded-full font-semibold shadow-luxury text-lg hover:-translate-y-1 transition-transform">
+                        Schedule Consultation
+                    </a>
+                    <a href="#gallery" class="px-8 py-4 rounded-full text-center font-semibold text-primary bg-white shadow-luxury border border-secondary/10 hover:-translate-y-1 transition-transform">
+                        View Makeovers
+                    </a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="flex flex-wrap items-center gap-6 pt-8 border-t border-primary/10">
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🏆</span>
+                        <span class="text-sm font-medium text-primary/80">Top Rated NYC<br>Cosmetic Dentist</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">💎</span>
+                        <span class="text-sm font-medium text-primary/80">Premium Artisanal<br>Materials</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-2xl">🌸</span>
+                        <span class="text-sm font-medium text-primary/80">Anxiety-Free<br>Spa Environment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="relative reveal delay-200">
+                <div class="relative z-10 rounded-[2.5rem] overflow-hidden shadow-hover">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1200" alt="Beautiful radiant smile" class="w-full h-[600px] object-cover object-top hover:scale-105 transition-transform duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                </div>
+                <!-- Floating Element -->
+                <div class="absolute -bottom-6 -left-6 glass-card p-4 rounded-2xl shadow-luxury z-20 flex items-center gap-4 animate-[bounce_4s_infinite]">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-sm">✨</div>
+                    <div>
+                        <p class="font-bold text-primary">500+</p>
+                        <p class="text-xs text-primary/70">Flawless Smiles Created</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-surface relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-secondary font-semibold tracking-wider uppercase text-sm mb-3">Our Expertise</h2>
+                <h3 class="text-4xl md:text-5xl font-bold mb-6">Signature Treatments</h3>
+                <p class="text-primary/70 text-lg font-light">Tailored cosmetic procedures ensuring optimal aesthetic outcomes while preserving your natural dental health.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-base rounded-3xl p-8 shadow-luxury border border-secondary/10 hover:-translate-y-3 hover:shadow-hover transition-all duration-300 reveal">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm mb-6">💎</div>
+                    <h4 class="text-xl font-bold mb-3">Porcelain Veneers</h4>
+                    <p class="text-primary/70 text-sm leading-relaxed mb-6">Hand-crafted, ultra-thin ceramic layers bonded to the front of teeth for a permanently flawless, red-carpet smile.</p>
+                    <a href="#booking" class="text-accent font-semibold text-sm hover:text-primary transition-colors flex items-center gap-1">Learn more <span>→</span></a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-base rounded-3xl p-8 shadow-luxury border border-secondary/10 hover:-translate-y-3 hover:shadow-hover transition-all duration-300 reveal delay-100">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm mb-6">✨</div>
+                    <h4 class="text-xl font-bold mb-3">Smile Makeovers</h4>
+                    <p class="text-primary/70 text-sm leading-relaxed mb-6">A comprehensive transformation combining multiple cosmetic treatments uniquely tailored to your facial harmony.</p>
+                    <a href="#booking" class="text-accent font-semibold text-sm hover:text-primary transition-colors flex items-center gap-1">Learn more <span>→</span></a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-base rounded-3xl p-8 shadow-luxury border border-secondary/10 hover:-translate-y-3 hover:shadow-hover transition-all duration-300 reveal delay-200">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm mb-6">👄</div>
+                    <h4 class="text-xl font-bold mb-3">Laser Whitening</h4>
+                    <p class="text-primary/70 text-sm leading-relaxed mb-6">State-of-the-art laser technology to brighten your teeth several shades in a single, comfortable spa-like session.</p>
+                    <a href="#booking" class="text-accent font-semibold text-sm hover:text-primary transition-colors flex items-center gap-1">Learn more <span>→</span></a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-base rounded-3xl p-8 shadow-luxury border border-secondary/10 hover:-translate-y-3 hover:shadow-hover transition-all duration-300 reveal delay-300">
+                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-3xl shadow-sm mb-6">🤍</div>
+                    <h4 class="text-xl font-bold mb-3">Invisible Alignment</h4>
+                    <p class="text-primary/70 text-sm leading-relaxed mb-6">Discreet, custom clear aligners designed to straighten your teeth flawlessly without the look of traditional braces.</p>
+                    <a href="#booking" class="text-accent font-semibold text-sm hover:text-primary transition-colors flex items-center gap-1">Learn more <span>→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before & After Gallery -->
+    <section id="gallery" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div class="max-w-xl">
+                    <h2 class="text-secondary font-semibold tracking-wider uppercase text-sm mb-3">Gallery</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold">Artistry in Motion</h3>
+                </div>
+                <p class="text-primary/70 font-light mt-4 md:mt-0 max-w-sm text-right hidden md:block">
+                    Real results from real clients. Swipe through our signature smile transformations.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Gallery Item 1 -->
+                <div class="reveal group relative rounded-[2rem] overflow-hidden shadow-luxury bg-surface border border-secondary/20 p-2">
+                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590623091764-6df5c7657d47?auto=format&fit=crop&q=80&w=800" alt="Beautiful transformed smile" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 flex justify-between items-center text-white">
+                            <div>
+                                <h4 class="font-bold text-xl drop-shadow-md">Porcelain Veneers</h4>
+                                <p class="text-sm text-white/90 font-light drop-shadow-md">10 Upper Arch Restorations</p>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold border border-white/30">
+                                After ✨
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="reveal delay-200 group relative rounded-[2rem] overflow-hidden shadow-luxury bg-surface border border-secondary/20 p-2">
+                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560942542-7f28876c22ab?auto=format&fit=crop&q=80&w=800" alt="Laser whitening results" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 flex justify-between items-center text-white">
+                            <div>
+                                <h4 class="font-bold text-xl drop-shadow-md">Full Smile Makeover</h4>
+                                <p class="text-sm text-white/90 font-light drop-shadow-md">Whitening + Laser Contouring</p>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold border border-white/30">
+                                After ✨
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center reveal">
+                <a href="#booking" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-secondary transition-colors border-b-2 border-accent pb-1">
+                    Start Your Transformation Journey <span>→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Marquee -->
+    <section id="testimonials" class="py-24 bg-primary text-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 mb-12 text-center reveal">
+            <h2 class="text-secondary font-semibold tracking-wider uppercase text-sm mb-3">Client Love</h2>
+            <h3 class="text-3xl md:text-4xl font-bold">Radiant Experiences</h3>
+        </div>
+
+        <div class="marquee-wrapper">
+            <!-- Testimonial Content Container (Duplicated inside for seamless loop) -->
+            <div class="marquee-content gap-8 px-4">
+                
+                <!-- Review 1 -->
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"Luminance completely changed my life. The porcelain veneers look incredibly natural, and the studio feels like a luxury spa. Never going anywhere else."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">S</div>
+                        <div>
+                            <p class="font-semibold text-sm">Sarah Jenkins</p>
+                            <p class="text-xs text-white/50">Veneer Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"Dr. Luminance is an absolute artist. My wedding photos are stunning because of my smile makeover. Painless, professional, and ultra-chic clinic!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">E</div>
+                        <div>
+                            <p class="font-semibold text-sm">Emily R.</p>
+                            <p class="text-xs text-white/50">Smile Makeover</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"The best cosmetic dental experience in Manhattan, hands down. From the rose-gold decor to the flawless laser whitening results, 10/10."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">M</div>
+                        <div>
+                            <p class="font-semibold text-sm">Michelle T.</p>
+                            <p class="text-xs text-white/50">Laser Whitening</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"I had severe dental anxiety, but the team here made me feel like royalty. The environment is so calming and my new smile is perfection."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">C</div>
+                        <div>
+                            <p class="font-semibold text-sm">Chloe D.</p>
+                            <p class="text-xs text-white/50">Invisalign & Whitening</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DUPLICATE FOR SEAMLESS LOOP -->
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"Luminance completely changed my life. The porcelain veneers look incredibly natural, and the studio feels like a luxury spa. Never going anywhere else."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">S</div>
+                        <div>
+                            <p class="font-semibold text-sm">Sarah Jenkins</p>
+                            <p class="text-xs text-white/50">Veneer Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"Dr. Luminance is an absolute artist. My wedding photos are stunning because of my smile makeover. Painless, professional, and ultra-chic clinic!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">E</div>
+                        <div>
+                            <p class="font-semibold text-sm">Emily R.</p>
+                            <p class="text-xs text-white/50">Smile Makeover</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"The best cosmetic dental experience in Manhattan, hands down. From the rose-gold decor to the flawless laser whitening results, 10/10."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">M</div>
+                        <div>
+                            <p class="font-semibold text-sm">Michelle T.</p>
+                            <p class="text-xs text-white/50">Laser Whitening</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[350px] bg-white/5 backdrop-blur-lg rounded-3xl p-8 border border-white/10 flex-shrink-0">
+                    <div class="flex items-center gap-1 text-accent mb-4 text-sm">⭐⭐⭐⭐⭐</div>
+                    <p class="text-white/80 font-light leading-relaxed mb-6">"I had severe dental anxiety, but the team here made me feel like royalty. The environment is so calming and my new smile is perfection."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold">C</div>
+                        <div>
+                            <p class="font-semibold text-sm">Chloe D.</p>
+                            <p class="text-xs text-white/50">Invisalign & Whitening</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form & Contact Section -->
+    <section id="booking" class="py-24 relative bg-base">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-surface rounded-[3rem] shadow-luxury p-8 md:p-12 border border-secondary/10 flex flex-col lg:flex-row gap-16 reveal">
+                
+                <!-- Contact Side Panel -->
+                <div class="lg:w-1/3 space-y-8">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Visit Our<br>Manhattan Studio</h2>
+                        <p class="text-primary/70 font-light leading-relaxed">
+                            Step into a world of cosmetic excellence. Fill out the form to request your private consultation.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-base flex items-center justify-center text-xl flex-shrink-0 border border-secondary/20">📍</div>
+                            <div>
+                                <h4 class="font-semibold text-primary">Location</h4>
+                                <p class="text-primary/70 text-sm mt-1">100 Park Avenue, Suite 1200<br>New York, NY 10017</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-base flex items-center justify-center text-xl flex-shrink-0 border border-secondary/20">📞</div>
+                            <div>
+                                <h4 class="font-semibold text-primary">Phone</h4>
+                                <p class="text-primary/70 text-sm mt-1">(212) 555-0199</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-base flex items-center justify-center text-xl flex-shrink-0 border border-secondary/20">💌</div>
+                            <div>
+                                <h4 class="font-semibold text-primary">Email</h4>
+                                <p class="text-primary/70 text-sm mt-1">hello@luminancesmile.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-base flex items-center justify-center text-xl flex-shrink-0 border border-secondary/20">🕒</div>
+                            <div>
+                                <h4 class="font-semibold text-primary">Studio Hours</h4>
+                                <p class="text-primary/70 text-sm mt-1">Mon - Fri: 9am - 6pm<br>Sat: Concierge Appointments Only</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="lg:w-2/3">
+                    <div class="bg-base rounded-3xl p-8 border border-secondary/10 shadow-sm">
+                        <h3 class="text-2xl font-bold mb-6">Request a Consultation</h3>
+                        <form onsubmit="event.preventDefault(); alert('Request sent! Our concierge will contact you shortly.');" class="space-y-6">
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-primary/80">Full Name</label>
+                                    <input type="text" required class="w-full bg-surface border border-secondary/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-transparent transition-shadow placeholder:text-primary/30" placeholder="Jane Doe">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-primary/80">Email Address</label>
+                                    <input type="email" required class="w-full bg-surface border border-secondary/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-transparent transition-shadow placeholder:text-primary/30" placeholder="jane@example.com">
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-primary/80">Phone Number</label>
+                                    <input type="tel" class="w-full bg-surface border border-secondary/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-transparent transition-shadow placeholder:text-primary/30" placeholder="(555) 000-0000">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-sm font-medium text-primary/80">Service of Interest</label>
+                                    <select class="w-full bg-surface border border-secondary/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-transparent transition-shadow text-primary">
+                                        <option>Smile Makeover</option>
+                                        <option>Porcelain Veneers</option>
+                                        <option>Laser Teeth Whitening</option>
+                                        <option>Invisible Aligners</option>
+                                        <option>Other / General</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-primary/80">Preferred Date (Optional)</label>
+                                <input type="date" class="w-full bg-surface border border-secondary/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-transparent transition-shadow text-primary/80">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-sm font-medium text-primary/80">Tell us about your smile goals</label>
+                                <textarea rows="3" class="w-full bg-surface border border-secondary/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-transparent transition-shadow placeholder:text-primary/30" placeholder="I'm interested in closing a gap and brightening my smile..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full btn-gradient text-white font-semibold py-4 rounded-xl shadow-lg hover:-translate-y-1 transition-transform">
+                                Send Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary pt-16 pb-8 text-white/80 rounded-t-[3rem] mt-[-2rem] relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                
+                <div class="col-span-1 md:col-span-2 space-y-4">
+                    <a href="#" class="flex items-center gap-2 group mb-4">
+                        <span class="text-2xl">✨</span>
+                        <span class="text-2xl font-bold tracking-tight text-white">Luminance<span class="text-accent font-light italic"> Smile Design</span></span>
+                    </a>
+                    <p class="text-white/60 font-light max-w-sm leading-relaxed">
+                        Manhattan's premier luxury cosmetic dental studio. Where advanced technology meets bespoke artistry to reveal your ultimate radiance.
+                    </p>
+                    <div class="flex gap-4 pt-2">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors text-white">📷</a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors text-white">📘</a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors text-white">🪶</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 font-light text-sm">
+                        <li><a href="#services" class="hover:text-secondary transition-colors">Our Services</a></li>
+                        <li><a href="#gallery" class="hover:text-secondary transition-colors">Before & After Gallery</a></li>
+                        <li><a href="#testimonials" class="hover:text-secondary transition-colors">Patient Reviews</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">About The Doctor</a></li>
+                        <li><a href="#booking" class="hover:text-secondary transition-colors">Book Online</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Legal</h4>
+                    <ul class="space-y-3 font-light text-sm">
+                        <li><a href="#" class="hover:text-secondary transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Accessibility</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            
+            <div class="pt-8 border-t border-white/10 text-center text-sm font-light text-white/50 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p>&copy; 2024 Luminance Smile Design. All rights reserved.</p>
+                <p>Crafted for excellence in NYC 🍎</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat FAB -->
+    <button onclick="alert('Live chat concierge initiating...')" class="fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-[0_10px_30px_rgba(45,27,105,0.4)] flex items-center justify-center text-2xl hover:scale-110 hover:bg-secondary transition-all duration-300 z-50 group">
+        💬
+        <span class="absolute right-full mr-4 bg-surface text-primary text-sm px-4 py-2 rounded-xl shadow-luxury opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-semibold border border-secondary/20">
+            Chat with our Concierge
+        </span>
+    </button>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for Scroll Reveals
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealObserver.observe(reveal);
+            });
+        });
+    </script>
+</body>
+</html>

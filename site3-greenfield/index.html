@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greenfield Family Dental | Gentle Care for</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1B4332',
+            secondary: '#52B788',
+            accent: '#D4AF37',
+            surface: '#F8FAFC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .glass-dark { background: rgba(15,23,42,0.85); backdrop-filter: blur(20px); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes slideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
+    .marquee { animation: marquee 40s linear infinite; }
+    .card-hover { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(82,183,136,0.15); }
+    .before-after-slider { position:relative; overflow:hidden; }
+    .before-after-slider .after { position:absolute; top:0; left:0; width:50%; overflow:hidden; }
+    .fab { transition: all 0.3s; }
+    .fab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(82,183,136,0.4); }
+    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s ease-out; }
+    [data-reveal].visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased">
+
+  <!-- Sticky Nav -->
+  <nav class="glass fixed top-0 w-full z-50 border-b border-white/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-2xl font-bold text-primary">Greenfield<span class="text-secondary">Family</span></a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Services</a>
+        <a href="#gallery" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Before & After</a>
+        <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Reviews</a>
+        <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Contact</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+12155551234" class="hidden sm:block text-sm font-medium text-gray-600 hover:text-secondary transition">📞 (215) 555-1234</a>
+        <a href="#contact" class="bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">Book Online</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center bg-gradient-to-br from-primary to-primary overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1920&q=80" alt="Modern dental clinic" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="animate-slide-up">
+        <div class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-1.5 mb-6">
+          <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+          <span class="text-secondary text-sm font-medium">Now Accepting New Patients</span>
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+          Gentle Care for<br><span class="text-secondary">Every</span> Generation.
+        </h1>
+        <p class="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
+          A warm, welcoming dental home for your entire family. From first teeth to grandparents, we treat everyone with care.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-teal-600 transition shadow-xl shadow-teal-500/30">
+            Book Free Consultation
+          </a>
+          <a href="#services" class="border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition">
+            View Our Services
+          </a>
+        </div>
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap gap-6 mt-12">
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-yellow-400 text-xl">⭐</span>
+            <span class="text-sm font-medium">500+ 5-Star Reviews</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-secondary text-xl">🏆</span>
+            <span class="text-sm font-medium">Best Family Practice 2026</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-blue-400 text-xl">🛡️</span>
+            <span class="text-sm font-medium">Accepts Most Insurances</span>
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:block animate-float">
+        <img src="https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=800&q=80" alt="Happy patient" class="rounded-3xl shadow-2xl shadow-black/30 border-2 border-white/10">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Our Expertise</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Comprehensive Dental Services</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">From routine checkups to complete smile makeovers, we offer everything under one roof.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Service Cards -->
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">👨‍👩‍👧‍👦</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Family Dentistry</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Comprehensive care for patients of all ages in a comfortable, friendly environment.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🧒</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Pediatric Dentistry</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Gentle, fun dental visits designed to keep kids smiling and cavity-free.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🛡️</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Preventive Care</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Regular cleanings, sealants, and fluoride treatments to protect your family's oral health.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🚑</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Emergency Dental</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Same-day emergency appointments for toothaches, broken teeth, and urgent needs.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After Gallery -->
+  <section id="gallery" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Results That Speak</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Before & After Gallery</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">See the stunning transformations our patients have experienced.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Before treatment" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
+            </div>
+          </div>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Complete Smile Makeover</h4>
+            <p class="text-gray-500 text-sm mt-1">Veneers + Whitening</p>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Dental work" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
+            </div>
+          </div>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Invisalign Treatment</h4>
+            <p class="text-gray-500 text-sm mt-1">12-month alignment</p>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Dental implant" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
+            </div>
+          </div>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Full Implant Restoration</h4>
+            <p class="text-gray-500 text-sm mt-1">Single-day procedure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Marquee -->
+  <section id="reviews" class="py-24 bg-primary overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-12">
+      <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Patient Stories</span>
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3">What Our Patients Say</h2>
+    </div>
+    <div class="flex gap-6 overflow-hidden">
+      <div class="flex gap-6 marquee">
+        <!-- Reviews (duplicated for seamless loop) -->
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Finally found a dentist my kids actually look forward to visiting! The children's area is amazing and Dr. Patel is so patient."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">LM</div>
+            <div><p class="text-white font-semibold text-sm">Lisa M.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Three generations of our family go to Greenfield. That says everything about the quality of care."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">TC</div>
+            <div><p class="text-white font-semibold text-sm">Tom C.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The hygienists are so gentle and thorough. I've never had a cleaning this comfortable anywhere else."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">NR</div>
+            <div><p class="text-white font-semibold text-sm">Nancy R.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Called on a Saturday with a broken tooth. They got me in within an hour. Can't beat that kind of service."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">BH</div>
+            <div><p class="text-white font-semibold text-sm">Brian H.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Finally found a dentist my kids actually look forward to visiting! The children's area is amazing and Dr. Patel is so patient."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">LM</div>
+            <div><p class="text-white font-semibold text-sm">Lisa M.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Three generations of our family go to Greenfield. That says everything about the quality of care."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">TC</div>
+            <div><p class="text-white font-semibold text-sm">Tom C.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The hygienists are so gentle and thorough. I've never had a cleaning this comfortable anywhere else."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">NR</div>
+            <div><p class="text-white font-semibold text-sm">Nancy R.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Called on a Saturday with a broken tooth. They got me in within an hour. Can't beat that kind of service."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">BH</div>
+            <div><p class="text-white font-semibold text-sm">Brian H.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Booking -->
+  <section id="contact" class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Get Started</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Book Your Appointment</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Schedule your visit today and take the first step toward your best smile.</p>
+      </div>
+      <div class="grid lg:grid-cols-5 gap-12" data-reveal>
+        <!-- Form -->
+        <div class="lg:col-span-3 bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="text-sm font-semibold text-primary mb-2 block">Full Name</label>
+                <input type="text" placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
+              </div>
+              <div>
+                <label class="text-sm font-semibold text-primary mb-2 block">Email</label>
+                <input type="email" placeholder="john@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
+              </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="text-sm font-semibold text-primary mb-2 block">Phone</label>
+                <input type="tel" placeholder="(215) 555-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
+              </div>
+              <div>
+                <label class="text-sm font-semibold text-primary mb-2 block">Preferred Date</label>
+                <input type="date" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
+              </div>
+            </div>
+            <div>
+              <label class="text-sm font-semibold text-primary mb-2 block">Reason for Visit</label>
+              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm text-gray-500">
+                <option>Select a service...</option>
+                <option>General Checkup & Cleaning</option>
+                <option>Cosmetic Consultation</option>
+                <option>Invisalign Evaluation</option>
+                <option>Dental Implants</option>
+                <option>Emergency Visit</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button type="submit" class="w-full bg-secondary text-white py-4 rounded-xl font-semibold text-lg hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">
+              Request Appointment →
+            </button>
+          </form>
+        </div>
+        <!-- Info Panel -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">📍 Visit Us</h3>
+            <p class="text-gray-500 text-sm">1234 Market Street, Suite 500<br>Philadelphia, PA 19103</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">🕐 Office Hours</h3>
+            <div class="space-y-2 text-sm text-gray-500">
+              <div class="flex justify-between"><span>Monday - Friday</span><span class="font-medium text-primary">8:00 AM - 6:00 PM</span></div>
+              <div class="flex justify-between"><span>Saturday</span><span class="font-medium text-primary">9:00 AM - 3:00 PM</span></div>
+              <div class="flex justify-between"><span>Sunday</span><span class="font-medium text-gray-400">Closed</span></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">📞 Contact</h3>
+            <p class="text-gray-500 text-sm">Phone: (215) 555-1234<br>Email: hello@greenfield.com</p>
+          </div>
+          <div class="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl h-48 flex items-center justify-center">
+            <span class="text-gray-500 text-sm font-medium">📍 Google Maps Embed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <p class="text-white font-bold text-lg mb-1">Greenfield<span class="text-secondary">Family</span> Studio</p>
+        <p class="text-sm">Where families come first, every visit.</p>
+      </div>
+      <div class="text-sm text-center md:text-right">
+        <p>&copy; 2026 Apex Dental Studio. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Chat FAB -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button class="fab w-16 h-16 bg-secondary rounded-full shadow-xl flex items-center justify-center text-white text-2xl">
+      💬
+    </button>
+  </div>
+
+  <script>
+    // Scroll reveal animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
