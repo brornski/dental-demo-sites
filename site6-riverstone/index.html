@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Riverstone Dental Spa | Relaxation Meets Dental Excellence</title>
+  <title>Riverstone Dental Spa | Dental Care That</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
@@ -11,11 +11,10 @@
       theme: {
         extend: {
           colors: {
-            navy: '#0a192f',
-            'navy-light': '#112240',
-            teal: '#14b8a6',
-            'teal-dark': '#0d9488',
-            surface: '#f0fdfa',
+            primary: '#44403C',
+            secondary: '#A3B18A',
+            accent: '#D4AF37',
+            surface: '#F8FAFC',
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -25,439 +24,375 @@
     }
   </script>
   <style>
-    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes breathe { 0%,100% { opacity:0.4; } 50% { opacity:0.7; } }
-    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .glass-dark { background: rgba(15,23,42,0.85); backdrop-filter: blur(20px); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes slideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
+    .marquee { animation: marquee 40s linear infinite; }
+    .card-hover { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(163,177,138,0.15); }
+    .before-after-slider { position:relative; overflow:hidden; }
+    .before-after-slider .after { position:absolute; top:0; left:0; width:50%; overflow:hidden; }
+    .fab { transition: all 0.3s; }
+    .fab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(163,177,138,0.4); }
+    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s ease-out; }
     [data-reveal].visible { opacity:1; transform:translateY(0); }
-    .card-lift { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
-    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,25,47,0.12); }
-    .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
-    .hamburger span { display:block; width:24px; height:2px; background:#0a192f; border-radius:2px; transition: all 0.3s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-    .hamburger.active span:nth-child(2) { opacity:0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-    .gradient-text { background: linear-gradient(135deg, #14b8a6 0%, #5eead4 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
   </style>
 </head>
 <body class="font-sans text-gray-800 bg-white antialiased">
 
-  <!-- Nav -->
-  <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+  <!-- Sticky Nav -->
+  <nav class="glass fixed top-0 w-full z-50 border-b border-white/20">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold text-navy">Riverstone <span class="text-teal">Spa</span></a>
+      <a href="#" class="text-2xl font-bold text-primary">Riverstone<span class="text-secondary">Spa</span></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#experience" class="text-sm font-medium text-gray-600 hover:text-teal transition">Experience</a>
-        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-teal transition">Services</a>
-        <a href="#team" class="text-sm font-medium text-gray-600 hover:text-teal transition">Our Team</a>
-        <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-teal transition">Reviews</a>
-        <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-teal transition">Contact</a>
+        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Services</a>
+        <a href="#gallery" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Before & After</a>
+        <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Reviews</a>
+        <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Contact</a>
       </div>
       <div class="flex items-center gap-4">
-        <a href="tel:+12157280395" class="hidden lg:block text-sm font-medium text-gray-600">(215) 728-0395</a>
-        <a href="#contact" class="hidden sm:inline-flex bg-teal text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-dark transition">Book a Visit</a>
-        <button class="hamburger md:hidden" onclick="this.classList.toggle('active');document.getElementById('mob6').classList.toggle('hidden')">
-          <span></span><span></span><span></span>
-        </button>
+        <a href="tel:+12155551234" class="hidden sm:block text-sm font-medium text-gray-600 hover:text-secondary transition">📞 (215) 555-1234</a>
+        <a href="#contact" class="bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">Book Online</a>
       </div>
-    </div>
-    <div id="mob6" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
-      <a href="#experience" class="block text-sm font-medium text-gray-700 py-2">Experience</a>
-      <a href="#services" class="block text-sm font-medium text-gray-700 py-2">Services</a>
-      <a href="#team" class="block text-sm font-medium text-gray-700 py-2">Our Team</a>
-      <a href="#reviews" class="block text-sm font-medium text-gray-700 py-2">Reviews</a>
-      <a href="#contact" class="block text-sm font-medium text-gray-700 py-2">Contact</a>
-      <a href="#contact" class="block bg-teal text-white text-center py-3 rounded-xl text-sm font-semibold">Book a Visit</a>
     </div>
   </nav>
 
-  <!-- Hero: full-width centered text with calming gradient -->
-  <section class="relative min-h-screen flex items-center justify-center bg-navy overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-navy"></div>
-    <!-- Decorative circles -->
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-teal/5 rounded-full blur-3xl" style="animation: breathe 6s ease-in-out infinite;"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal/5 rounded-full blur-3xl" style="animation: breathe 6s ease-in-out infinite 3s;"></div>
-    <div class="relative text-center max-w-4xl mx-auto px-6 py-32" style="animation: fadeUp 1s ease-out forwards;">
-      <div class="inline-flex items-center gap-2 bg-teal/10 border border-teal/20 rounded-full px-5 py-2 mb-8">
-        <span class="w-2 h-2 bg-teal rounded-full animate-pulse"></span>
-        <span class="text-teal text-sm font-medium">Accepting New Patients</span>
-      </div>
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
-        Dental Care That<br>Feels Like a <span class="gradient-text">Retreat</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-        Aromatherapy, weighted blankets, noise-canceling headphones, and gentle sedation -- all designed to transform your dental visit into a calming experience.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="#contact" class="bg-teal text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-teal-dark transition shadow-xl shadow-teal/20">
-          Book Your Retreat
-        </a>
-        <a href="#experience" class="border-2 border-white/20 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/5 transition">
-          See the Experience
-        </a>
-      </div>
-      <div class="flex flex-wrap justify-center gap-8 mt-14">
-        <div class="text-center">
-          <p class="text-3xl font-bold text-white">4.9</p>
-          <p class="text-sm text-gray-400 mt-1">Google Rating</p>
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center bg-gradient-to-br from-primary to-primary overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80" alt="Modern dental clinic" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="animate-slide-up">
+        <div class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-1.5 mb-6">
+          <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+          <span class="text-secondary text-sm font-medium">Now Accepting New Patients</span>
         </div>
-        <div class="w-px bg-white/10 hidden sm:block"></div>
-        <div class="text-center">
-          <p class="text-3xl font-bold text-white">8K+</p>
-          <p class="text-sm text-gray-400 mt-1">Relaxed Patients</p>
+        <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+          Dental Care That<br><span class="text-secondary">Feels Like</span> a Retreat.
+        </h1>
+        <p class="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
+          A spa-like dental experience with aromatherapy, weighted blankets, noise-canceling headphones, and gentle sedation options.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-teal-600 transition shadow-xl shadow-teal-500/30">
+            Book Free Consultation
+          </a>
+          <a href="#services" class="border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition">
+            View Our Services
+          </a>
         </div>
-        <div class="w-px bg-white/10 hidden sm:block"></div>
-        <div class="text-center">
-          <p class="text-3xl font-bold text-white">12</p>
-          <p class="text-sm text-gray-400 mt-1">Years Serving Philly</p>
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap gap-6 mt-12">
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-yellow-400 text-xl">⭐</span>
+            <span class="text-sm font-medium">500+ 5-Star Reviews</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-secondary text-xl">🏆</span>
+            <span class="text-sm font-medium">Best Dental Spa 2026</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-blue-400 text-xl">🛡️</span>
+            <span class="text-sm font-medium">Accepts Most Insurances</span>
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:block animate-float">
+        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80" alt="Happy patient" class="rounded-3xl shadow-2xl shadow-black/30 border-2 border-white/10">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Our Expertise</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Comprehensive Dental Services</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">From routine checkups to complete smile makeovers, we offer everything under one roof.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Service Cards -->
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🧘</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Spa-Style Cleanings</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Enjoy aromatherapy, heated neck pillows, and paraffin hand wax during your cleaning.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">😴</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Sedation Dentistry</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Anxiety-free procedures with oral sedation and nitrous oxide for total comfort.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">💆</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Holistic Approach</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Mercury-free fillings, biocompatible materials, and minimally invasive techniques.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
+        </div>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🌿</span>
+          </div>
+          <h3 class="text-xl font-bold text-primary mb-3">Wellness Consultations</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Comprehensive oral-systemic health assessments connecting dental and overall wellness.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Spa Experience: 3 large horizontal feature cards -->
-  <section id="experience" class="py-24 bg-white">
+  <!-- Before & After Gallery -->
+  <section id="gallery" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">The Riverstone Difference</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">Not Your Typical Dental Office</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Every detail has been designed to make you feel calm, comfortable, and cared for from the moment you arrive.</p>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Results That Speak</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Before & After Gallery</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">See the stunning transformations our patients have experienced.</p>
       </div>
-      <div class="space-y-6">
-        <!-- Feature 1 -->
-        <div class="grid md:grid-cols-2 gap-0 bg-surface rounded-3xl overflow-hidden card-lift" data-reveal>
-          <div class="p-10 md:p-12 flex flex-col justify-center">
-            <div class="w-12 h-12 bg-teal/10 rounded-2xl flex items-center justify-center mb-6">
-              <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 8.25 4.69c.178-.043.357-.082.537-.117A7.5 7.5 0 0 0 12 3z"/></svg>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Before treatment" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
             </div>
-            <h3 class="text-2xl font-bold text-navy mb-3">Sensory Comfort Suite</h3>
-            <p class="text-gray-500 leading-relaxed mb-4">Each treatment room features dimmable lighting, aromatherapy diffusers, heated neck pillows, and paraffin hand wax treatments. You set the mood -- we handle the rest.</p>
-            <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Lavender, eucalyptus, and citrus aromatherapy</li>
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Weighted blankets available on request</li>
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Noise-canceling headphones with your music</li>
-            </ul>
           </div>
-          <div class="h-64 md:h-auto bg-gradient-to-br from-teal/10 to-teal/5 flex items-center justify-center">
-            <svg class="w-24 h-24 text-teal/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 8.25 4.69c.178-.043.357-.082.537-.117A7.5 7.5 0 0 0 12 3z"/></svg>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Complete Smile Makeover</h4>
+            <p class="text-gray-500 text-sm mt-1">Veneers + Whitening</p>
           </div>
         </div>
-        <!-- Feature 2 -->
-        <div class="grid md:grid-cols-2 gap-0 bg-surface rounded-3xl overflow-hidden card-lift" data-reveal>
-          <div class="h-64 md:h-auto bg-gradient-to-br from-navy/5 to-navy/10 flex items-center justify-center order-2 md:order-1">
-            <svg class="w-24 h-24 text-navy/10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47-2.47M5 14.5l2.47-2.47"/></svg>
-          </div>
-          <div class="p-10 md:p-12 flex flex-col justify-center order-1 md:order-2">
-            <div class="w-12 h-12 bg-teal/10 rounded-2xl flex items-center justify-center mb-6">
-              <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5"/></svg>
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Dental work" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
             </div>
-            <h3 class="text-2xl font-bold text-navy mb-3">Sedation Options for Every Level</h3>
-            <p class="text-gray-500 leading-relaxed mb-4">Whether you need mild relaxation or full sedation, our board-certified team tailors the approach to your comfort level. No judgment, no pressure -- just gentle care.</p>
-            <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Nitrous oxide (laughing gas)</li>
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Oral conscious sedation</li>
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>IV sedation for extensive procedures</li>
-            </ul>
+          </div>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Invisalign Treatment</h4>
+            <p class="text-gray-500 text-sm mt-1">12-month alignment</p>
           </div>
         </div>
-        <!-- Feature 3 -->
-        <div class="grid md:grid-cols-2 gap-0 bg-surface rounded-3xl overflow-hidden card-lift" data-reveal>
-          <div class="p-10 md:p-12 flex flex-col justify-center">
-            <div class="w-12 h-12 bg-teal/10 rounded-2xl flex items-center justify-center mb-6">
-              <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Dental implant" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
             </div>
-            <h3 class="text-2xl font-bold text-navy mb-3">Holistic Wellness Approach</h3>
-            <p class="text-gray-500 leading-relaxed mb-4">We believe oral health and whole-body wellness are connected. Our team takes time to understand your health history and creates treatment plans that support your overall well-being.</p>
-            <ul class="space-y-2">
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Mercury-free, biocompatible materials</li>
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Oral-systemic health assessments</li>
-              <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-teal flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Minimally invasive treatment philosophy</li>
-            </ul>
           </div>
-          <div class="h-64 md:h-auto bg-gradient-to-br from-teal/5 to-surface flex items-center justify-center">
-            <svg class="w-24 h-24 text-teal/15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Full Implant Restoration</h4>
+            <p class="text-gray-500 text-sm mt-1">Single-day procedure</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services: 3x2 grid -->
-  <section id="services" class="py-24 bg-navy">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Our Services</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">Comprehensive Spa Dentistry</h2>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Full-service dental care in an environment that puts your comfort first.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition" data-reveal>
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Spa-Style Cleanings</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Enjoy aromatherapy, heated pillows, and hand treatments during your routine cleaning.</p>
-        </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition" data-reveal>
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Cosmetic Dentistry</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Veneers, bonding, and professional whitening to create your ideal smile.</p>
-        </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition" data-reveal>
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Same-Day Crowns</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">CEREC technology lets us design and place a custom crown in a single appointment.</p>
-        </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition" data-reveal>
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17l-5.1-5.1m0 0L3.16 12.9a2.25 2.25 0 003.18 3.18l2.83-2.83m-2.83 2.83l5.1-5.1m0 0l2.83 2.83a2.25 2.25 0 003.18-3.18l-2.83-2.83"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Sedation Dentistry</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Nitrous oxide, oral sedation, and IV options for anxiety-free treatment.</p>
-        </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition" data-reveal>
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Preventive Care</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Comprehensive exams, digital x-rays, and personalized oral health plans.</p>
-        </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition" data-reveal>
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Wellness Consultations</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Oral-systemic health assessments connecting dental wellness to whole-body health.</p>
-        </div>
-      </div>
+  <!-- Testimonials Marquee -->
+  <section id="reviews" class="py-24 bg-primary overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-12">
+      <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Patient Stories</span>
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3">What Our Patients Say</h2>
     </div>
-  </section>
-
-  <!-- Team: 2 doctors side by side -->
-  <section id="team" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Meet Your Team</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">Compassionate Experts</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Our team is trained not just in dentistry, but in making you feel genuinely comfortable.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="bg-surface rounded-3xl p-8 text-center card-lift" data-reveal>
-          <div class="w-32 h-32 bg-gradient-to-br from-teal/20 to-teal/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-            <svg class="w-16 h-16 text-teal/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-navy">Dr. Lauren Reeves, DDS</h3>
-          <p class="text-teal font-medium text-sm mt-1 mb-4">Founder and Lead Dentist</p>
-          <p class="text-gray-500 text-sm leading-relaxed">Dr. Reeves spent five years studying integrative dental medicine before founding Riverstone. She holds advanced certifications in sedation dentistry and holistic oral care, and is passionate about removing the anxiety from dental visits.</p>
-        </div>
-        <div class="bg-surface rounded-3xl p-8 text-center card-lift" data-reveal>
-          <div class="w-32 h-32 bg-gradient-to-br from-navy/10 to-navy/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-            <svg class="w-16 h-16 text-navy/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-navy">Dr. Daniel Okafor, DMD</h3>
-          <p class="text-teal font-medium text-sm mt-1 mb-4">Cosmetic and Restorative Dentist</p>
-          <p class="text-gray-500 text-sm leading-relaxed">With over a decade of experience in cosmetic and restorative dentistry, Dr. Okafor specializes in smile makeovers and same-day restorations. He is known for his gentle chairside manner and meticulous attention to detail.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews: static cards in row -->
-  <section id="reviews" class="py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Patient Stories</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">What Our Patients Say</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl p-8 shadow-sm card-lift" data-reveal>
-          <div class="flex gap-0.5 mb-4">
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">"I used to have panic attacks at the dentist. At Riverstone, I actually fell asleep during my cleaning. The weighted blanket and lavender made all the difference."</p>
+    <div class="flex gap-6 overflow-hidden">
+      <div class="flex gap-6 marquee">
+        <!-- Reviews (duplicated for seamless loop) -->
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"I used to have panic attacks at the dentist. At Riverstone, I actually fell asleep during my procedure. Unbelievable."</p>
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-teal/10 rounded-full flex items-center justify-center text-teal font-bold text-sm">CH</div>
-            <div><p class="text-navy font-semibold text-sm">Christina H.</p><p class="text-gray-400 text-xs">Patient since 2022</p></div>
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">CH</div>
+            <div><p class="text-white font-semibold text-sm">Christina H.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
           </div>
         </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm card-lift" data-reveal>
-          <div class="flex gap-0.5 mb-4">
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">"My wife and I both switched to Riverstone last year. The noise-canceling headphones and calming environment genuinely make it feel like a spa. We actually look forward to our appointments."</p>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The weighted blanket and noise-canceling headphones transformed the experience. It genuinely felt like a spa visit."</p>
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-teal/10 rounded-full flex items-center justify-center text-teal font-bold text-sm">TP</div>
-            <div><p class="text-navy font-semibold text-sm">Thomas P.</p><p class="text-gray-400 text-xs">Patient since 2023</p></div>
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">MW</div>
+            <div><p class="text-white font-semibold text-sm">Mark W.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
           </div>
         </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm card-lift" data-reveal>
-          <div class="flex gap-0.5 mb-4">
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">"Dr. Reeves explained how my gum health was connected to my migraines. After treatment, both have improved. The holistic approach here is the real deal."</p>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The holistic approach makes so much sense. They explained how my oral health connects to everything else. Eye-opening."</p>
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-teal/10 rounded-full flex items-center justify-center text-teal font-bold text-sm">JS</div>
-            <div><p class="text-navy font-semibold text-sm">Julie S.</p><p class="text-gray-400 text-xs">Patient since 2021</p></div>
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">JS</div>
+            <div><p class="text-white font-semibold text-sm">Julie S.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"My wife and I now look forward to our dental appointments. Never thought I'd say that. Riverstone is special."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">TP</div>
+            <div><p class="text-white font-semibold text-sm">Thomas P.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"I used to have panic attacks at the dentist. At Riverstone, I actually fell asleep during my procedure. Unbelievable."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">CH</div>
+            <div><p class="text-white font-semibold text-sm">Christina H.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The weighted blanket and noise-canceling headphones transformed the experience. It genuinely felt like a spa visit."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">MW</div>
+            <div><p class="text-white font-semibold text-sm">Mark W.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The holistic approach makes so much sense. They explained how my oral health connects to everything else. Eye-opening."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">JS</div>
+            <div><p class="text-white font-semibold text-sm">Julie S.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"My wife and I now look forward to our dental appointments. Never thought I'd say that. Riverstone is special."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">TP</div>
+            <div><p class="text-white font-semibold text-sm">Thomas P.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact: split screen dark left / white right -->
-  <section id="contact" class="py-24 bg-white">
+  <!-- Contact / Booking -->
+  <section id="contact" class="py-24 bg-surface">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-xl" data-reveal>
-        <!-- Left: Dark info panel -->
-        <div class="bg-navy p-10 md:p-12 flex flex-col justify-center">
-          <span class="text-teal font-semibold text-sm uppercase tracking-wider">Get In Touch</span>
-          <h2 class="text-3xl lg:text-4xl font-bold text-white mt-3 mb-6">Ready for a Different Kind of Dental Visit?</h2>
-          <p class="text-gray-400 mb-10 leading-relaxed">Schedule your first appointment and discover why thousands of patients call Riverstone their favorite place to go.</p>
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Get Started</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Book Your Appointment</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Schedule your visit today and take the first step toward your best smile.</p>
+      </div>
+      <div class="grid lg:grid-cols-5 gap-12" data-reveal>
+        <!-- Form -->
+        <div class="lg:col-span-3 bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="text-sm font-semibold text-primary mb-2 block">Full Name</label>
+                <input type="text" placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
               <div>
-                <p class="text-white font-semibold text-sm">Address</p>
-                <p class="text-gray-400 text-sm mt-1">900 Spring Garden Street, Suite 110<br>Philadelphia, PA 19123</p>
+                <label class="text-sm font-semibold text-primary mb-2 block">Email</label>
+                <input type="email" placeholder="john@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="text-sm font-semibold text-primary mb-2 block">Phone</label>
+                <input type="tel" placeholder="(215) 555-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
               <div>
-                <p class="text-white font-semibold text-sm">Phone</p>
-                <p class="text-gray-400 text-sm mt-1">(215) 728-0395</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <div>
-                <p class="text-white font-semibold text-sm">Hours</p>
-                <div class="text-gray-400 text-sm mt-1 space-y-1">
-                  <p>Mon -- Fri: 8:00 AM -- 6:00 PM</p>
-                  <p>Saturday: 9:00 AM -- 2:00 PM</p>
-                  <p>Sunday: Closed</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Right: Form -->
-        <div class="bg-surface p-10 md:p-12">
-          <h3 class="text-2xl font-bold text-navy mb-2">Book Your Visit</h3>
-          <p class="text-gray-500 text-sm mb-8">Fill out the form below and our team will confirm your appointment within 24 hours.</p>
-          <form class="space-y-5">
-            <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Full Name</label>
-                <input type="text" placeholder="Jane Smith" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Phone</label>
-                <input type="tel" placeholder="(215) 000-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
+                <label class="text-sm font-semibold text-primary mb-2 block">Preferred Date</label>
+                <input type="date" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
             </div>
             <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">Email</label>
-              <input type="email" placeholder="jane@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
-            </div>
-            <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">What Brings You In?</label>
-              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm text-gray-500">
+              <label class="text-sm font-semibold text-primary mb-2 block">Reason for Visit</label>
+              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm text-gray-500">
                 <option>Select a service...</option>
-                <option>Spa-Style Cleaning</option>
+                <option>General Checkup & Cleaning</option>
                 <option>Cosmetic Consultation</option>
-                <option>Sedation Dentistry</option>
-                <option>Same-Day Crown</option>
-                <option>Wellness Consultation</option>
-                <option>General Checkup</option>
+                <option>Invisalign Evaluation</option>
+                <option>Dental Implants</option>
+                <option>Emergency Visit</option>
                 <option>Other</option>
               </select>
             </div>
-            <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">Anything We Should Know?</label>
-              <textarea rows="3" placeholder="Let us know about any dental anxiety, preferences, or questions..." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm resize-none"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-teal text-white py-4 rounded-xl font-semibold text-lg hover:bg-teal-dark transition">
-              Request Appointment
+            <button type="submit" class="w-full bg-secondary text-white py-4 rounded-xl font-semibold text-lg hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">
+              Request Appointment →
             </button>
           </form>
+        </div>
+        <!-- Info Panel -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">📍 Visit Us</h3>
+            <p class="text-gray-500 text-sm">1234 Market Street, Suite 500<br>Philadelphia, PA 19103</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">🕐 Office Hours</h3>
+            <div class="space-y-2 text-sm text-gray-500">
+              <div class="flex justify-between"><span>Monday - Friday</span><span class="font-medium text-primary">8:00 AM - 6:00 PM</span></div>
+              <div class="flex justify-between"><span>Saturday</span><span class="font-medium text-primary">9:00 AM - 3:00 PM</span></div>
+              <div class="flex justify-between"><span>Sunday</span><span class="font-medium text-gray-400">Closed</span></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">📞 Contact</h3>
+            <p class="text-gray-500 text-sm">Phone: (215) 555-1234<br>Email: hello@riverstone.com</p>
+          </div>
+          <div class="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl h-48 flex items-center justify-center">
+            <span class="text-gray-500 text-sm font-medium">📍 Google Maps Embed</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-navy text-gray-400 py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        <div>
-          <p class="text-white font-bold text-xl mb-3">Riverstone <span class="text-teal">Spa</span></p>
-          <p class="text-sm leading-relaxed">Where relaxation meets dental excellence. Serving the Philadelphia community with compassionate, anxiety-free dental care.</p>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-4">Services</p>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#services" class="hover:text-teal transition">Spa-Style Cleanings</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Cosmetic Dentistry</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Sedation Dentistry</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Same-Day Crowns</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-4">Quick Links</p>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#experience" class="hover:text-teal transition">The Experience</a></li>
-            <li><a href="#team" class="hover:text-teal transition">Our Team</a></li>
-            <li><a href="#reviews" class="hover:text-teal transition">Patient Reviews</a></li>
-            <li><a href="#contact" class="hover:text-teal transition">Book Online</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-4">Contact</p>
-          <ul class="space-y-2 text-sm">
-            <li>900 Spring Garden St, Ste 110</li>
-            <li>Philadelphia, PA 19123</li>
-            <li><a href="tel:+12157280395" class="hover:text-teal transition">(215) 728-0395</a></li>
-            <li><a href="mailto:hello@riverstonedentalspa.com" class="hover:text-teal transition">hello@riverstonedentalspa.com</a></li>
-          </ul>
-        </div>
+  <footer class="bg-primary text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <p class="text-white font-bold text-lg mb-1">Riverstone<span class="text-secondary">Spa</span> Studio</p>
+        <p class="text-sm">Where relaxation meets dental excellence.</p>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm">&copy; 2026 Riverstone Dental Spa. All rights reserved.</p>
-        <div class="flex gap-6 text-sm">
-          <a href="#" class="hover:text-teal transition">Privacy Policy</a>
-          <a href="#" class="hover:text-teal transition">Terms of Service</a>
-          <a href="#" class="hover:text-teal transition">Accessibility</a>
-        </div>
+      <div class="text-sm text-center md:text-right">
+        <p>&copy; 2026 Apex Dental Studio. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Floating Chat FAB -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button class="fab w-16 h-16 bg-secondary rounded-full shadow-xl flex items-center justify-center text-white text-2xl">
+      💬
+    </button>
+  </div>
+
   <script>
+    // Scroll reveal animation
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
     document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
   </script>
 </body>
