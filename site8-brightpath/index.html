@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrightPath Pediatric Dentistry | Happy Kids, Healthy Smiles</title>
+  <title>Bright Path Pediatric Dentistry | Happy Kids,</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script>
@@ -11,11 +11,10 @@
       theme: {
         extend: {
           colors: {
-            navy: '#0a192f',
-            'navy-light': '#112240',
-            teal: '#14b8a6',
-            'teal-dark': '#0d9488',
-            surface: '#f0fdfa',
+            primary: '#581C87',
+            secondary: '#F59E0B',
+            accent: '#D4AF37',
+            surface: '#F8FAFC',
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -25,454 +24,375 @@
     }
   </script>
   <style>
-    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes wiggle { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(3deg); } 75% { transform: rotate(-3deg); } }
-    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
+    .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .glass-dark { background: rgba(15,23,42,0.85); backdrop-filter: blur(20px); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    @keyframes slideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
+    .marquee { animation: marquee 40s linear infinite; }
+    .card-hover { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(245,158,11,0.15); }
+    .before-after-slider { position:relative; overflow:hidden; }
+    .before-after-slider .after { position:absolute; top:0; left:0; width:50%; overflow:hidden; }
+    .fab { transition: all 0.3s; }
+    .fab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(245,158,11,0.4); }
+    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s ease-out; }
     [data-reveal].visible { opacity:1; transform:translateY(0); }
-    .card-lift { transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
-    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,25,47,0.12); }
-    .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
-    .hamburger span { display:block; width:24px; height:2px; background:#0a192f; border-radius:2px; transition: all 0.3s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-    .hamburger.active span:nth-child(2) { opacity:0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
-    .fun-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
   </style>
 </head>
 <body class="font-sans text-gray-800 bg-white antialiased">
 
-  <!-- Nav: light with playful accent -->
-  <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
+  <!-- Sticky Nav -->
+  <nav class="glass fixed top-0 w-full z-50 border-b border-white/20">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold text-navy">Bright<span class="text-teal">Path</span></a>
+      <a href="#" class="text-2xl font-bold text-primary">Bright<span class="text-secondary">Path</span></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#why-us" class="text-sm font-medium text-gray-600 hover:text-teal transition">Why Us</a>
-        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-teal transition">Services</a>
-        <a href="#team" class="text-sm font-medium text-gray-600 hover:text-teal transition">Our Team</a>
-        <a href="#parents" class="text-sm font-medium text-gray-600 hover:text-teal transition">Parent Reviews</a>
-        <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-teal transition">Contact</a>
+        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Services</a>
+        <a href="#gallery" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Before & After</a>
+        <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Reviews</a>
+        <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Contact</a>
       </div>
       <div class="flex items-center gap-4">
-        <a href="tel:+12155620244" class="hidden lg:block text-sm font-medium text-gray-600">(215) 562-0244</a>
-        <a href="#contact" class="hidden sm:inline-flex bg-teal text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-dark transition">Book a Visit</a>
-        <button class="hamburger md:hidden" onclick="this.classList.toggle('active');document.getElementById('mob8').classList.toggle('hidden')">
-          <span></span><span></span><span></span>
-        </button>
+        <a href="tel:+12155551234" class="hidden sm:block text-sm font-medium text-gray-600 hover:text-secondary transition">📞 (215) 555-1234</a>
+        <a href="#contact" class="bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">Book Online</a>
       </div>
-    </div>
-    <div id="mob8" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-3">
-      <a href="#why-us" class="block text-sm font-medium text-gray-700 py-2">Why Us</a>
-      <a href="#services" class="block text-sm font-medium text-gray-700 py-2">Services</a>
-      <a href="#team" class="block text-sm font-medium text-gray-700 py-2">Our Team</a>
-      <a href="#parents" class="block text-sm font-medium text-gray-700 py-2">Parent Reviews</a>
-      <a href="#contact" class="block text-sm font-medium text-gray-700 py-2">Contact</a>
-      <a href="#contact" class="block bg-teal text-white text-center py-3 rounded-xl text-sm font-semibold">Book a Visit</a>
     </div>
   </nav>
 
-  <!-- Hero: split layout with fun shape -->
-  <section class="relative min-h-screen flex items-center bg-surface overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-12 items-center w-full" style="animation: fadeUp 1s ease-out forwards;">
-      <div>
-        <div class="inline-flex items-center gap-2 bg-teal/10 border border-teal/20 rounded-full px-5 py-2 mb-8">
-          <span class="w-2 h-2 bg-teal rounded-full animate-pulse"></span>
-          <span class="text-teal text-sm font-medium">Ages 0 -- 18 Welcome</span>
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center bg-gradient-to-br from-primary to-primary overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80" alt="Modern dental clinic" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="animate-slide-up">
+        <div class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-1.5 mb-6">
+          <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+          <span class="text-secondary text-sm font-medium">Now Accepting New Patients</span>
         </div>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-navy leading-tight mb-6">
-          Where Kids <span class="text-teal">Love</span> Going to the Dentist
+        <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+          Happy Kids,<br><span class="text-secondary">Healthy</span> Smiles.
         </h1>
-        <p class="text-lg md:text-xl text-gray-500 mb-10 max-w-xl leading-relaxed">
-          A pediatric dental office designed for children, run by specialists who understand how to make every visit fun, gentle, and positive.
+        <p class="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
+          A colorful, adventure-themed dental office designed specifically for children from infancy through teens.
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="bg-teal text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-teal-dark transition shadow-xl shadow-teal/20">
-            Schedule a Visit
+          <a href="#contact" class="bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-teal-600 transition shadow-xl shadow-teal-500/30">
+            Book Free Consultation
           </a>
-          <a href="#why-us" class="border-2 border-navy/15 text-navy px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-navy/5 transition">
-            Why BrightPath?
+          <a href="#services" class="border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition">
+            View Our Services
           </a>
         </div>
-        <div class="flex flex-wrap gap-8 mt-12">
-          <div>
-            <p class="text-3xl font-bold text-navy">10+</p>
-            <p class="text-sm text-gray-500 mt-1">Years with Kids</p>
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap gap-6 mt-12">
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-yellow-400 text-xl">⭐</span>
+            <span class="text-sm font-medium">500+ 5-Star Reviews</span>
           </div>
-          <div>
-            <p class="text-3xl font-bold text-navy">5K+</p>
-            <p class="text-sm text-gray-500 mt-1">Happy Families</p>
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-secondary text-xl">🏆</span>
+            <span class="text-sm font-medium">Top Pediatric Practice 2026</span>
           </div>
-          <div>
-            <p class="text-3xl font-bold text-navy">4.9</p>
-            <p class="text-sm text-gray-500 mt-1">Parent Rating</p>
+          <div class="flex items-center gap-2 text-gray-300">
+            <span class="text-blue-400 text-xl">🛡️</span>
+            <span class="text-sm font-medium">Accepts Most Insurances</span>
           </div>
         </div>
       </div>
-      <div class="hidden lg:flex justify-center items-center">
-        <div class="fun-shape w-96 h-96 bg-gradient-to-br from-teal/20 via-teal/10 to-surface flex items-center justify-center" style="animation: wiggle 6s ease-in-out infinite;">
-          <div class="fun-shape w-64 h-64 bg-gradient-to-br from-teal/15 to-teal/5 flex items-center justify-center">
-            <svg class="w-24 h-24 text-teal/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
-          </div>
-        </div>
+      <div class="hidden lg:block animate-float">
+        <img src="https://images.unsplash.com/photo-1600170311833-c2cf5280ce49?w=800&q=80" alt="Happy patient" class="rounded-3xl shadow-2xl shadow-black/30 border-2 border-white/10">
       </div>
     </div>
   </section>
 
-  <!-- Why Us: 4 icon cards in a row -->
-  <section id="why-us" class="py-24 bg-white">
+  <!-- Services -->
+  <section id="services" class="py-24 bg-surface">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">The BrightPath Difference</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">Built for Kids, Trusted by Parents</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Everything about our practice -- from the waiting room to the treatment rooms -- is designed with kids in mind.</p>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Our Expertise</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Comprehensive Dental Services</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">From routine checkups to complete smile makeovers, we offer everything under one roof.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-surface rounded-2xl p-8 text-center card-lift" data-reveal>
-          <div class="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Service Cards -->
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🦸</span>
           </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Kid-First Environment</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Themed treatment rooms, ceiling-mounted TVs, and a game zone make every visit an adventure.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">Kid-Friendly Exams</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Fun, gentle checkups with TVs on the ceiling, prizes, and a team that speaks kid.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
         </div>
-        <div class="bg-surface rounded-2xl p-8 text-center card-lift" data-reveal>
-          <div class="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/></svg>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">🛡️</span>
           </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Board-Certified Specialists</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Our dentists completed 2-3 extra years of training focused exclusively on children's dental care.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">Sealants & Fluoride</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Protective treatments that prevent cavities before they start.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
         </div>
-        <div class="bg-surface rounded-2xl p-8 text-center card-lift" data-reveal>
-          <div class="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl">😴</span>
           </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Gentle Sedation Options</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Safe, age-appropriate sedation for anxious children or those needing extensive treatment.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">Gentle Sedation</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Safe sedation options for anxious little ones who need extra comfort.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
         </div>
-        <div class="bg-surface rounded-2xl p-8 text-center card-lift" data-reveal>
-          <div class="w-14 h-14 bg-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
+          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl"></span>
           </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Positive Dental Habits</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">We teach brushing, flossing, and nutrition in a way kids actually remember and enjoy.</p>
+          <h3 class="text-xl font-bold text-primary mb-3">Orthodontic Screening</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Early evaluation at age 7 to catch alignment issues while they're easy to fix.</p>
+          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services: 3x2 grid with colored top borders -->
-  <section id="services" class="py-24 bg-navy">
+  <!-- Before & After Gallery -->
+  <section id="gallery" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">What We Do</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3 mb-4">Pediatric Dental Services</h2>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">Complete dental care for infants, children, and teens -- from first tooth to senior year.</p>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Results That Speak</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Before & After Gallery</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">See the stunning transformations our patients have experienced.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-navy-light rounded-2xl p-8 border-t-2 border-teal" data-reveal>
-          <div class="w-11 h-11 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">First Visit and Baby Exams</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Gentle exams starting at age one to monitor development and establish a dental home early.</p>
-        </div>
-        <div class="bg-navy-light rounded-2xl p-8 border-t-2 border-teal" data-reveal>
-          <div class="w-11 h-11 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Cleanings and Fluoride</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Fun, thorough cleanings with flavored fluoride treatments that kids pick themselves.</p>
-        </div>
-        <div class="bg-navy-light rounded-2xl p-8 border-t-2 border-teal" data-reveal>
-          <div class="w-11 h-11 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Sealants</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Protective coatings on molars that prevent cavities in the grooves kids often miss when brushing.</p>
-        </div>
-        <div class="bg-navy-light rounded-2xl p-8 border-t-2 border-teal" data-reveal>
-          <div class="w-11 h-11 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17l-5.1-5.1m0 0L3.16 12.9a2.25 2.25 0 003.18 3.18l2.83-2.83m-2.83 2.83l5.1-5.1m0 0l2.83 2.83a2.25 2.25 0 003.18-3.18l-2.83-2.83"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Fillings and Crowns</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Tooth-colored restorations and stainless steel crowns for primary teeth -- placed gently and quickly.</p>
-        </div>
-        <div class="bg-navy-light rounded-2xl p-8 border-t-2 border-teal" data-reveal>
-          <div class="w-11 h-11 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Orthodontic Screening</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Early evaluations starting at age 7 to identify bite and alignment issues before they become complex.</p>
-        </div>
-        <div class="bg-navy-light rounded-2xl p-8 border-t-2 border-teal" data-reveal>
-          <div class="w-11 h-11 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Emergency Care</h3>
-          <p class="text-gray-400 text-sm leading-relaxed">Same-day appointments for knocked-out teeth, toothaches, and other pediatric dental emergencies.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team: 3 members in card grid -->
-  <section id="team" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Our Team</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">The People Behind the Smiles</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Every member of our team is trained to work with kids and knows how to make dental visits fun and fear-free.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="bg-surface rounded-3xl p-8 text-center card-lift" data-reveal>
-          <div class="w-28 h-28 bg-gradient-to-br from-teal/20 to-teal/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-            <svg class="w-14 h-14 text-teal/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy">Dr. Priya Mehta, DMD</h3>
-          <p class="text-teal font-medium text-sm mt-1 mb-4">Pediatric Dentist, Founder</p>
-          <p class="text-gray-500 text-sm leading-relaxed">Board-certified pediatric dentist with over 12 years of experience. Completed her residency at Children's Hospital of Philadelphia and is passionate about making every child feel safe in the dental chair.</p>
-        </div>
-        <div class="bg-surface rounded-3xl p-8 text-center card-lift" data-reveal>
-          <div class="w-28 h-28 bg-gradient-to-br from-navy/10 to-navy/5 rounded-full mx-auto mb-6 flex items-center justify-center">
-            <svg class="w-14 h-14 text-navy/15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy">Dr. Brian Calloway, DDS</h3>
-          <p class="text-teal font-medium text-sm mt-1 mb-4">Pediatric Dentist</p>
-          <p class="text-gray-500 text-sm leading-relaxed">Specializes in treating children with special healthcare needs and dental anxiety. Known for his calm demeanor and ability to connect with even the most nervous young patients.</p>
-        </div>
-        <div class="bg-surface rounded-3xl p-8 text-center card-lift" data-reveal>
-          <div class="w-28 h-28 bg-gradient-to-br from-teal/10 to-surface rounded-full mx-auto mb-6 flex items-center justify-center">
-            <svg class="w-14 h-14 text-teal/20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.75" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy">Maria Santos, RDH</h3>
-          <p class="text-teal font-medium text-sm mt-1 mb-4">Lead Pediatric Hygienist</p>
-          <p class="text-gray-500 text-sm leading-relaxed">With 8 years in pediatric hygiene, Maria turns cleanings into games. She uses storytelling and rewards to build positive associations that last a lifetime.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Parent Reviews: 2x2 grid -->
-  <section id="parents" class="py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Parent Reviews</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">What Parents Are Saying</h2>
-      </div>
-      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div class="bg-white rounded-2xl p-8 shadow-sm card-lift" data-reveal>
-          <div class="flex gap-0.5 mb-3">
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-5">"My daughter used to scream at the dentist. At BrightPath, she asks when we can go back. Dr. Mehta has this incredible ability to make kids feel safe and in control. The whole experience is just magical."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 bg-teal/10 rounded-full flex items-center justify-center text-teal font-bold text-xs">JR</div>
-            <div><p class="text-navy font-semibold text-sm">Jennifer R.</p><p class="text-gray-400 text-xs">Mom of Lily, age 5</p></div>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm card-lift" data-reveal>
-          <div class="flex gap-0.5 mb-3">
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-5">"Both my boys (ages 4 and 7) love coming here. The themed rooms and prize wall keep them excited, and Dr. Calloway explains everything at their level. This is how pediatric dentistry should be done."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 bg-teal/10 rounded-full flex items-center justify-center text-teal font-bold text-xs">MH</div>
-            <div><p class="text-navy font-semibold text-sm">Marcus H.</p><p class="text-gray-400 text-xs">Dad of two boys</p></div>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm card-lift" data-reveal>
-          <div class="flex gap-0.5 mb-3">
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-5">"Dr. Mehta caught an alignment issue during my son's age-7 screening that our previous dentist had missed. Early treatment saved us from years of complex orthodontics later. So grateful for this practice."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 bg-teal/10 rounded-full flex items-center justify-center text-teal font-bold text-xs">AS</div>
-            <div><p class="text-navy font-semibold text-sm">Amanda S.</p><p class="text-gray-400 text-xs">Mom of Ethan, age 8</p></div>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm card-lift" data-reveal>
-          <div class="flex gap-0.5 mb-3">
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-4 h-4 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-5">"My anxious daughter needed a filling and I was dreading it. The sedation was handled with such professionalism and care -- she did not even realize anything had happened. Dr. Calloway is truly gifted with nervous kids."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 bg-teal/10 rounded-full flex items-center justify-center text-teal font-bold text-xs">CP</div>
-            <div><p class="text-navy font-semibold text-sm">Carlos P.</p><p class="text-gray-400 text-xs">Dad of Sofia, age 6</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact: centered form with info row below -->
-  <section id="contact" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-3 gap-10" data-reveal>
-        <!-- Info cards column -->
-        <div class="space-y-6">
-          <div>
-            <span class="text-teal font-semibold text-sm uppercase tracking-wider">Contact Us</span>
-            <h2 class="text-3xl lg:text-4xl font-bold text-navy mt-3 mb-4">Schedule Your Child's Visit</h2>
-            <p class="text-gray-500 leading-relaxed">Whether it is a first visit for your baby or a routine cleaning for your teen, we are here to help. Fill out the form and our team will reach out to confirm.</p>
-          </div>
-          <div class="bg-surface rounded-2xl p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-              </div>
-              <div>
-                <p class="text-navy font-semibold text-sm">Our Office</p>
-                <p class="text-gray-500 text-sm mt-1">4500 Frankford Avenue, Suite 100<br>Philadelphia, PA 19124</p>
-              </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Before treatment" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
             </div>
           </div>
-          <div class="bg-surface rounded-2xl p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
-              </div>
-              <div>
-                <p class="text-navy font-semibold text-sm">Phone</p>
-                <p class="text-gray-500 text-sm mt-1">(215) 562-0244</p>
-              </div>
-            </div>
-          </div>
-          <div class="bg-surface rounded-2xl p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              </div>
-              <div>
-                <p class="text-navy font-semibold text-sm">Hours</p>
-                <div class="text-gray-500 text-sm mt-1 space-y-1">
-                  <p>Mon -- Thu: 8:00 AM -- 5:00 PM</p>
-                  <p>Friday: 8:00 AM -- 3:00 PM</p>
-                  <p>Sat -- Sun: Closed</p>
-                </div>
-              </div>
-            </div>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Complete Smile Makeover</h4>
+            <p class="text-gray-500 text-sm mt-1">Veneers + Whitening</p>
           </div>
         </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Dental work" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
+            </div>
+          </div>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Invisalign Treatment</h4>
+            <p class="text-gray-500 text-sm mt-1">12-month alignment</p>
+          </div>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
+          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
+            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Dental implant" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
+              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
+              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
+            </div>
+          </div>
+          <div class="p-6 bg-white">
+            <h4 class="font-bold text-primary">Full Implant Restoration</h4>
+            <p class="text-gray-500 text-sm mt-1">Single-day procedure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Marquee -->
+  <section id="reviews" class="py-24 bg-primary overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 text-center mb-12">
+      <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Patient Stories</span>
+      <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3">What Our Patients Say</h2>
+    </div>
+    <div class="flex gap-6 overflow-hidden">
+      <div class="flex gap-6 marquee">
+        <!-- Reviews (duplicated for seamless loop) -->
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"My daughter used to scream at the dentist. At Bright Path, she asks when we can go back! The staff is magical with kids."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">JR</div>
+            <div><p class="text-white font-semibold text-sm">Jennifer R.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The adventure-themed rooms make it feel like a theme park, not a dental office. Both my boys love going."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">MH</div>
+            <div><p class="text-white font-semibold text-sm">Marcus H.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Dr. Kim caught an alignment issue at my son's age 7 screening. Early treatment saved us years of braces later."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">AS</div>
+            <div><p class="text-white font-semibold text-sm">Amanda S.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The sedation for my anxious daughter was handled with such care. She didn't even realize she had a filling done."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">CP</div>
+            <div><p class="text-white font-semibold text-sm">Carlos P.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"My daughter used to scream at the dentist. At Bright Path, she asks when we can go back! The staff is magical with kids."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">JR</div>
+            <div><p class="text-white font-semibold text-sm">Jennifer R.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The adventure-themed rooms make it feel like a theme park, not a dental office. Both my boys love going."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">MH</div>
+            <div><p class="text-white font-semibold text-sm">Marcus H.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Dr. Kim caught an alignment issue at my son's age 7 screening. Early treatment saved us years of braces later."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">AS</div>
+            <div><p class="text-white font-semibold text-sm">Amanda S.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The sedation for my anxious daughter was handled with such care. She didn't even realize she had a filling done."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">CP</div>
+            <div><p class="text-white font-semibold text-sm">Carlos P.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Booking -->
+  <section id="contact" class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Get Started</span>
+        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Book Your Appointment</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Schedule your visit today and take the first step toward your best smile.</p>
+      </div>
+      <div class="grid lg:grid-cols-5 gap-12" data-reveal>
         <!-- Form -->
-        <div class="lg:col-span-2 bg-surface rounded-3xl p-8 md:p-10">
-          <h3 class="text-2xl font-bold text-navy mb-2">Request an Appointment</h3>
-          <p class="text-gray-500 text-sm mb-8">We will call you within one business day to confirm.</p>
-          <form class="space-y-5">
-            <div class="grid sm:grid-cols-2 gap-5">
+        <div class="lg:col-span-3 bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Parent / Guardian Name</label>
-                <input type="text" placeholder="Your name" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
+                <label class="text-sm font-semibold text-primary mb-2 block">Full Name</label>
+                <input type="text" placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
               <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Child's Name</label>
-                <input type="text" placeholder="Child's name" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
+                <label class="text-sm font-semibold text-primary mb-2 block">Email</label>
+                <input type="email" placeholder="john@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
             </div>
-            <div class="grid sm:grid-cols-2 gap-5">
+            <div class="grid md:grid-cols-2 gap-6">
               <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Phone</label>
-                <input type="tel" placeholder="(215) 000-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
+                <label class="text-sm font-semibold text-primary mb-2 block">Phone</label>
+                <input type="tel" placeholder="(215) 555-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
               <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Child's Age</label>
-                <input type="text" placeholder="e.g. 4 years old" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
+                <label class="text-sm font-semibold text-primary mb-2 block">Preferred Date</label>
+                <input type="date" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
               </div>
             </div>
             <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">Email</label>
-              <input type="email" placeholder="parent@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm">
-            </div>
-            <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">Reason for Visit</label>
-              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm text-gray-500">
+              <label class="text-sm font-semibold text-primary mb-2 block">Reason for Visit</label>
+              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm text-gray-500">
                 <option>Select a service...</option>
-                <option>First Dental Visit / Baby Exam</option>
-                <option>Cleaning and Checkup</option>
-                <option>Sealants or Fluoride</option>
-                <option>Filling or Crown</option>
-                <option>Orthodontic Screening</option>
-                <option>Emergency</option>
+                <option>General Checkup & Cleaning</option>
+                <option>Cosmetic Consultation</option>
+                <option>Invisalign Evaluation</option>
+                <option>Dental Implants</option>
+                <option>Emergency Visit</option>
                 <option>Other</option>
               </select>
             </div>
-            <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">Anything We Should Know?</label>
-              <textarea rows="3" placeholder="Allergies, anxiety, special needs, or anything that helps us prepare..." class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm resize-none"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-teal text-white py-4 rounded-xl font-semibold text-lg hover:bg-teal-dark transition">
-              Request Appointment
+            <button type="submit" class="w-full bg-secondary text-white py-4 rounded-xl font-semibold text-lg hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">
+              Request Appointment →
             </button>
           </form>
+        </div>
+        <!-- Info Panel -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">📍 Visit Us</h3>
+            <p class="text-gray-500 text-sm">1234 Market Street, Suite 500<br>Philadelphia, PA 19103</p>
+          </div>
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">🕐 Office Hours</h3>
+            <div class="space-y-2 text-sm text-gray-500">
+              <div class="flex justify-between"><span>Monday - Friday</span><span class="font-medium text-primary">8:00 AM - 6:00 PM</span></div>
+              <div class="flex justify-between"><span>Saturday</span><span class="font-medium text-primary">9:00 AM - 3:00 PM</span></div>
+              <div class="flex justify-between"><span>Sunday</span><span class="font-medium text-gray-400">Closed</span></div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-primary text-lg mb-4">📞 Contact</h3>
+            <p class="text-gray-500 text-sm">Phone: (215) 555-1234<br>Email: hello@brightpath.com</p>
+          </div>
+          <div class="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl h-48 flex items-center justify-center">
+            <span class="text-gray-500 text-sm font-medium">📍 Google Maps Embed</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-navy text-gray-400 py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        <div>
-          <p class="text-white font-bold text-xl mb-3">Bright<span class="text-teal">Path</span></p>
-          <p class="text-sm leading-relaxed">Pediatric dentistry where kids feel safe, parents feel confident, and smiles grow healthy.</p>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-4">Services</p>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#services" class="hover:text-teal transition">Baby Exams</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Cleanings and Fluoride</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Sealants</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Orthodontic Screening</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-4">Quick Links</p>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#why-us" class="hover:text-teal transition">Why BrightPath</a></li>
-            <li><a href="#team" class="hover:text-teal transition">Our Team</a></li>
-            <li><a href="#parents" class="hover:text-teal transition">Parent Reviews</a></li>
-            <li><a href="#contact" class="hover:text-teal transition">Book Online</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-4">Contact</p>
-          <ul class="space-y-2 text-sm">
-            <li>4500 Frankford Ave, Ste 100</li>
-            <li>Philadelphia, PA 19124</li>
-            <li><a href="tel:+12155620244" class="hover:text-teal transition">(215) 562-0244</a></li>
-            <li><a href="mailto:hello@brightpathpediatric.com" class="hover:text-teal transition">hello@brightpathpediatric.com</a></li>
-          </ul>
-        </div>
+  <footer class="bg-primary text-gray-400 py-12">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div>
+        <p class="text-white font-bold text-lg mb-1">Bright<span class="text-secondary">Path</span> Studio</p>
+        <p class="text-sm">Making every kid's dental journey fun.</p>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-sm">&copy; 2026 BrightPath Pediatric Dentistry. All rights reserved.</p>
-        <div class="flex gap-6 text-sm">
-          <a href="#" class="hover:text-teal transition">Privacy Policy</a>
-          <a href="#" class="hover:text-teal transition">Terms of Service</a>
-          <a href="#" class="hover:text-teal transition">Accessibility</a>
-        </div>
+      <div class="text-sm text-center md:text-right">
+        <p>&copy; 2026 Apex Dental Studio. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Floating Chat FAB -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button class="fab w-16 h-16 bg-secondary rounded-full shadow-xl flex items-center justify-center text-white text-2xl">
+      💬
+    </button>
+  </div>
+
   <script>
+    // Scroll reveal animation
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    
     document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
   </script>
 </body>
