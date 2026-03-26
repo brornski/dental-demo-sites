@@ -3,397 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Precision Implant Center | Permanent Solutions,</title>
+  <title>Precision Implant Center | Advanced Dental Implants in Philadelphia</title>
+  <meta name="description" content="Philadelphia's leading dental implant center. 3D-guided surgery, All-on-4, and bone grafting. 98% success rate with over 5,000 implants placed.">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1C1917',
-            secondary: '#D4AF37',
-            accent: '#D4AF37',
-            surface: '#F8FAFC',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
+      theme: { extend: {
+        colors: { navy: '#0a192f', 'navy-light': '#112240', teal: '#14b8a6', 'teal-dark': '#0d9488', surface: '#f0fdfa' },
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      }},
     }
   </script>
   <style>
-    .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    .glass-dark { background: rgba(15,23,42,0.85); backdrop-filter: blur(20px); }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes slideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
-    .marquee { animation: marquee 40s linear infinite; }
-    .card-hover { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(212,175,55,0.15); }
-    .before-after-slider { position:relative; overflow:hidden; }
-    .before-after-slider .after { position:absolute; top:0; left:0; width:50%; overflow:hidden; }
-    .fab { transition: all 0.3s; }
-    .fab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(212,175,55,0.4); }
-    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s ease-out; }
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    .anim { animation: fadeUp 0.7s ease-out forwards; }
+    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.6s ease-out; }
     [data-reveal].visible { opacity:1; transform:translateY(0); }
+    .card-lift { transition: all 0.3s ease; }
+    .card-lift:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(10,25,47,0.08); }
+    .hamburger span { display:block; width:24px; height:2px; background:#fff; margin:5px 0; transition:all 0.3s; border-radius:2px; }
+    .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity:0; }
+    .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
   </style>
 </head>
 <body class="font-sans text-gray-800 bg-white antialiased">
 
-  <!-- Sticky Nav -->
-  <nav class="glass fixed top-0 w-full z-50 border-b border-white/20">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold text-primary">Precision<span class="text-secondary">Implant</span></a>
+  <nav class="fixed top-0 w-full z-50 bg-navy/95 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="#" class="text-xl sm:text-2xl font-bold text-white">Precision<span class="text-teal"> Implant</span></a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Services</a>
-        <a href="#gallery" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Before & After</a>
-        <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Reviews</a>
-        <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Contact</a>
+        <a href="#procedures" class="text-sm font-medium text-gray-300 hover:text-teal transition">Procedures</a>
+        <a href="#technology" class="text-sm font-medium text-gray-300 hover:text-teal transition">Technology</a>
+        <a href="#surgeon" class="text-sm font-medium text-gray-300 hover:text-teal transition">Our Surgeon</a>
+        <a href="#reviews" class="text-sm font-medium text-gray-300 hover:text-teal transition">Reviews</a>
+        <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-teal transition">Contact</a>
       </div>
-      <div class="flex items-center gap-4">
-        <a href="tel:+12155551234" class="hidden sm:block text-sm font-medium text-gray-600 hover:text-secondary transition">📞 (215) 555-1234</a>
-        <a href="#contact" class="bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">Book Online</a>
+      <div class="flex items-center gap-3">
+        <a href="tel:+12158419320" class="hidden lg:block text-sm text-gray-300">(215) 841-9320</a>
+        <a href="#contact" class="hidden sm:inline-block bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-teal-dark transition">Free Consultation</a>
+        <button class="hamburger md:hidden" onclick="this.classList.toggle('active');document.getElementById('mob4').classList.toggle('hidden')"><span></span><span></span><span></span></button>
       </div>
+    </div>
+    <div id="mob4" class="hidden md:hidden border-t border-white/10 px-4 pb-4">
+      <a href="#procedures" class="block py-3 text-sm text-gray-300">Procedures</a>
+      <a href="#technology" class="block py-3 text-sm text-gray-300">Technology</a>
+      <a href="#surgeon" class="block py-3 text-sm text-gray-300">Our Surgeon</a>
+      <a href="#reviews" class="block py-3 text-sm text-gray-300">Reviews</a>
+      <a href="#contact" class="block py-3 text-sm text-gray-300">Contact</a>
+      <a href="#contact" class="block mt-2 bg-teal text-white px-5 py-3 rounded-lg text-sm font-semibold text-center">Free Consultation</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="relative min-h-screen flex items-center bg-gradient-to-br from-primary to-primary overflow-hidden">
-    <div class="absolute inset-0 opacity-20">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80" alt="Modern dental clinic" class="w-full h-full object-cover">
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-12 items-center">
-      <div class="animate-slide-up">
-        <div class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-1.5 mb-6">
-          <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
-          <span class="text-secondary text-sm font-medium">Now Accepting New Patients</span>
+  <section class="relative min-h-screen flex items-center bg-navy overflow-hidden">
+    <div class="absolute inset-0"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80" alt="Implant surgery suite" class="w-full h-full object-cover opacity-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/80"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20">
+      <div class="max-w-3xl">
+        <div class="anim inline-flex items-center gap-2 bg-teal/10 border border-teal/20 rounded-full px-4 py-1.5 mb-6">
+          <span class="w-2 h-2 bg-teal rounded-full animate-pulse"></span>
+          <span class="text-teal text-sm font-medium">Board-Certified Implant Specialists</span>
         </div>
-        <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
-          Permanent Solutions,<br><span class="text-secondary">Precision</span> Results.
-        </h1>
-        <p class="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
-          State-of-the-art dental implant center using guided surgery and 3D planning for perfect outcomes every time.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-teal-600 transition shadow-xl shadow-teal-500/30">
-            Book Free Consultation
-          </a>
-          <a href="#services" class="border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition">
-            View Our Services
-          </a>
+        <h1 class="anim text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.1] mb-6">Permanent Solutions.<br><span class="text-teal">Precision Results.</span></h1>
+        <p class="anim text-lg sm:text-xl text-gray-400 mb-8 max-w-xl leading-relaxed">State-of-the-art dental implant center using 3D-guided surgery and digital planning for perfect outcomes. Over 5,000 implants placed with a 98% success rate.</p>
+        <div class="anim flex flex-wrap gap-4 mb-12">
+          <a href="#contact" class="bg-teal text-white px-8 py-4 rounded-xl font-semibold hover:bg-teal-dark transition shadow-lg shadow-teal/20">Book Free Consultation</a>
+          <a href="#procedures" class="border-2 border-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/5 transition">View Procedures</a>
         </div>
-        <!-- Trust Badges -->
-        <div class="flex flex-wrap gap-6 mt-12">
-          <div class="flex items-center gap-2 text-gray-300">
-            <span class="text-yellow-400 text-xl">⭐</span>
-            <span class="text-sm font-medium">500+ 5-Star Reviews</span>
-          </div>
-          <div class="flex items-center gap-2 text-gray-300">
-            <span class="text-secondary text-xl">🏆</span>
-            <span class="text-sm font-medium">Top Implant Center 2026</span>
-          </div>
-          <div class="flex items-center gap-2 text-gray-300">
-            <span class="text-blue-400 text-xl">🛡️</span>
-            <span class="text-sm font-medium">Accepts Most Insurances</span>
-          </div>
+        <div class="anim grid grid-cols-3 gap-6 max-w-md">
+          <div><p class="text-3xl font-extrabold text-white">98%</p><p class="text-xs text-gray-400 mt-1">Success Rate</p></div>
+          <div><p class="text-3xl font-extrabold text-white">5K+</p><p class="text-xs text-gray-400 mt-1">Implants Placed</p></div>
+          <div><p class="text-3xl font-extrabold text-white">20+</p><p class="text-xs text-gray-400 mt-1">Years Experience</p></div>
         </div>
-      </div>
-      <div class="hidden lg:block animate-float">
-        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80" alt="Happy patient" class="rounded-3xl shadow-2xl shadow-black/30 border-2 border-white/10">
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- Procedures -->
+  <section id="procedures" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-16" data-reveal>
-        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Our Expertise</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Comprehensive Dental Services</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">From routine checkups to complete smile makeovers, we offer everything under one roof.</p>
+        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Our Procedures</span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">Implant Solutions for Every Need</h2>
+        <p class="text-gray-500 text-lg max-w-2xl mx-auto">From single tooth replacement to full-arch restoration, we offer the full spectrum of implant procedures.</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Service Cards -->
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">💻</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">Single Implants</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Individual tooth replacement with titanium implants that look and function like natural teeth.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">🦷</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">All-on-4 Solutions</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Full-arch restoration in a single day using just four strategically placed implants.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">🏗️</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">Bone Grafting</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Advanced bone regeneration techniques to build the foundation for successful implants.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">🔩</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">3D Guided Surgery</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Computer-planned precision placement for predictable, minimally invasive procedures.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Before & After Gallery -->
-  <section id="gallery" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Results That Speak</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Before & After Gallery</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">See the stunning transformations our patients have experienced.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
-          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Before treatment" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
-              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
-              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
-            </div>
-          </div>
-          <div class="p-6 bg-white">
-            <h4 class="font-bold text-primary">Complete Smile Makeover</h4>
-            <p class="text-gray-500 text-sm mt-1">Veneers + Whitening</p>
-          </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
-          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
-            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Dental work" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
-              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
-              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
-            </div>
-          </div>
-          <div class="p-6 bg-white">
-            <h4 class="font-bold text-primary">Invisalign Treatment</h4>
-            <p class="text-gray-500 text-sm mt-1">12-month alignment</p>
-          </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
-          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
-            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Dental implant" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
-              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
-              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
-            </div>
-          </div>
-          <div class="p-6 bg-white">
-            <h4 class="font-bold text-primary">Full Implant Restoration</h4>
-            <p class="text-gray-500 text-sm mt-1">Single-day procedure</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Marquee -->
-  <section id="reviews" class="py-24 bg-primary overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 text-center mb-12">
-      <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Patient Stories</span>
-      <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3">What Our Patients Say</h2>
-    </div>
-    <div class="flex gap-6 overflow-hidden">
-      <div class="flex gap-6 marquee">
-        <!-- Reviews (duplicated for seamless loop) -->
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"After years of dentures, I finally got All-on-4 implants. Life-changing doesn't begin to describe it. I can eat steak again!"</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">GS</div>
-            <div><p class="text-white font-semibold text-sm">George S.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The 3D planning showed me exactly what my results would look like before surgery. No surprises, just perfection."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">PW</div>
-            <div><p class="text-white font-semibold text-sm">Patricia W.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"I was told by two other dentists I didn't have enough bone for implants. Precision found a way. Incredible team."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">RJ</div>
-            <div><p class="text-white font-semibold text-sm">Richard J.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The guided surgery was remarkably comfortable. Minimal swelling, minimal downtime. Back to work in 3 days."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">ML</div>
-            <div><p class="text-white font-semibold text-sm">Maria L.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <!-- Duplicate set for seamless loop -->
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"After years of dentures, I finally got All-on-4 implants. Life-changing doesn't begin to describe it. I can eat steak again!"</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">GS</div>
-            <div><p class="text-white font-semibold text-sm">George S.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The 3D planning showed me exactly what my results would look like before surgery. No surprises, just perfection."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">PW</div>
-            <div><p class="text-white font-semibold text-sm">Patricia W.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"I was told by two other dentists I didn't have enough bone for implants. Precision found a way. Incredible team."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">RJ</div>
-            <div><p class="text-white font-semibold text-sm">Richard J.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The guided surgery was remarkably comfortable. Minimal swelling, minimal downtime. Back to work in 3 days."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">ML</div>
-            <div><p class="text-white font-semibold text-sm">Maria L.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact / Booking -->
-  <section id="contact" class="py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Get Started</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Book Your Appointment</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Schedule your visit today and take the first step toward your best smile.</p>
-      </div>
-      <div class="grid lg:grid-cols-5 gap-12" data-reveal>
-        <!-- Form -->
-        <div class="lg:col-span-3 bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
-          <form class="space-y-6">
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Full Name</label>
-                <input type="text" placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Email</label>
-                <input type="email" placeholder="john@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Phone</label>
-                <input type="tel" placeholder="(215) 555-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Preferred Date</label>
-                <input type="date" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-            </div>
+      <div class="grid sm:grid-cols-2 gap-6" data-reveal>
+        <div class="bg-surface rounded-2xl p-8 card-lift border border-teal/10">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg></div>
             <div>
-              <label class="text-sm font-semibold text-primary mb-2 block">Reason for Visit</label>
-              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm text-gray-500">
-                <option>Select a service...</option>
-                <option>General Checkup & Cleaning</option>
-                <option>Cosmetic Consultation</option>
-                <option>Invisalign Evaluation</option>
-                <option>Dental Implants</option>
-                <option>Emergency Visit</option>
-                <option>Other</option>
-              </select>
+              <h3 class="text-xl font-bold text-navy mb-2">Single Tooth Implants</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Individual titanium implant with a custom ceramic crown. Looks, feels, and functions like your natural tooth. Typical healing time: 3-4 months.</p>
             </div>
-            <button type="submit" class="w-full bg-secondary text-white py-4 rounded-xl font-semibold text-lg hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">
-              Request Appointment →
-            </button>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-8 card-lift border border-teal/10">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"></path></svg></div>
+            <div>
+              <h3 class="text-xl font-bold text-navy mb-2">All-on-4 Full Arch</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Complete upper or lower arch restoration using just four strategically placed implants. Walk out with a full set of teeth in a single day.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-8 card-lift border border-teal/10">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg></div>
+            <div>
+              <h3 class="text-xl font-bold text-navy mb-2">Bone Grafting</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Advanced bone regeneration techniques using synthetic and donor materials to build the foundation for successful implant placement.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-8 card-lift border border-teal/10">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 bg-teal/10 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div>
+            <div>
+              <h3 class="text-xl font-bold text-navy mb-2">3D-Guided Surgery</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">Computer-planned, digitally guided implant placement for pinpoint accuracy, minimal invasion, and predictable outcomes every time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology -->
+  <section id="technology" class="py-20 lg:py-28 bg-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center" data-reveal>
+        <div>
+          <span class="text-teal font-semibold text-sm uppercase tracking-wider">Our Technology</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-3 mb-6">Surgical Precision Powered by Technology</h2>
+          <p class="text-gray-400 leading-relaxed mb-6">Our center is equipped with the latest in implant technology, allowing us to plan and execute with a level of accuracy that was impossible just a decade ago.</p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4"><svg class="w-6 h-6 text-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><div><p class="text-white font-semibold text-sm">Cone Beam CT (CBCT) Scanner</p><p class="text-gray-400 text-sm">Full 3D imaging of your jaw for surgical planning</p></div></div>
+            <div class="flex items-start gap-4"><svg class="w-6 h-6 text-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><div><p class="text-white font-semibold text-sm">Digital Surgical Guides</p><p class="text-gray-400 text-sm">Custom 3D-printed guides for pinpoint implant placement</p></div></div>
+            <div class="flex items-start gap-4"><svg class="w-6 h-6 text-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><div><p class="text-white font-semibold text-sm">IV Sedation Suite</p><p class="text-gray-400 text-sm">Full sedation capabilities for comfortable procedures</p></div></div>
+            <div class="flex items-start gap-4"><svg class="w-6 h-6 text-teal flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><div><p class="text-white font-semibold text-sm">In-House Lab</p><p class="text-gray-400 text-sm">Same-day temporary restorations and custom abutments</p></div></div>
+          </div>
+        </div>
+        <div><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=700&q=80" alt="Advanced dental technology" class="rounded-2xl w-full h-[400px] object-cover border border-white/10"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Surgeon -->
+  <section id="surgeon" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center" data-reveal>
+        <div class="order-2 lg:order-1">
+          <div class="w-full h-[400px] rounded-2xl bg-gradient-to-br from-navy/5 to-teal/5 flex items-center justify-center border border-teal/10">
+            <div class="text-center"><div class="w-36 h-36 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal/20 to-navy/10 flex items-center justify-center border-2 border-teal/20"><span class="text-5xl font-bold text-teal">RK</span></div><p class="text-navy font-bold text-xl">Dr. Robert Kim</p><p class="text-teal text-sm font-medium">Oral & Maxillofacial Surgeon</p></div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <span class="text-teal font-semibold text-sm uppercase tracking-wider">Meet Your Surgeon</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-navy mt-3 mb-6">Dr. Robert Kim, DMD, MD</h2>
+          <p class="text-gray-500 leading-relaxed mb-4">Dr. Kim is a dual-degree oral and maxillofacial surgeon with over 20 years of experience in implant dentistry. He completed his surgical residency at the Hospital of the University of Pennsylvania and holds board certification from the American Board of Oral and Maxillofacial Surgery.</p>
+          <p class="text-gray-500 leading-relaxed mb-6">He has placed over 5,000 dental implants and is recognized as one of the top implant surgeons in the greater Philadelphia area. Patients from across the tri-state area seek his expertise for complex cases.</p>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-surface px-4 py-2 rounded-lg text-sm font-medium text-navy border border-teal/10">Board Certified</span>
+            <span class="bg-surface px-4 py-2 rounded-lg text-sm font-medium text-navy border border-teal/10">5,000+ Implants</span>
+            <span class="bg-surface px-4 py-2 rounded-lg text-sm font-medium text-navy border border-teal/10">Penn Trained</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="py-20 lg:py-28 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16" data-reveal>
+        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Patient Reviews</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-navy mt-3">Patient Results Speak for Themselves</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal>
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 card-lift">
+          <div class="flex gap-0.5 mb-3 text-teal"><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">"After years of dentures, I finally got All-on-4 implants. I can eat steak again. Dr. Kim and his team are simply the best at what they do."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 bg-navy rounded-full flex items-center justify-center text-teal font-bold text-xs">GS</div><div><p class="text-navy font-semibold text-sm">George S.</p><p class="text-gray-400 text-xs">All-on-4 Patient</p></div></div>
+        </div>
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 card-lift">
+          <div class="flex gap-0.5 mb-3 text-teal"><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">"Two other dentists said I did not have enough bone for implants. Dr. Kim found a way with bone grafting. This team does not give up on patients."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 bg-navy rounded-full flex items-center justify-center text-teal font-bold text-xs">RJ</div><div><p class="text-navy font-semibold text-sm">Richard J.</p><p class="text-gray-400 text-xs">Bone Graft + Implant</p></div></div>
+        </div>
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 card-lift">
+          <div class="flex gap-0.5 mb-3 text-teal"><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <p class="text-gray-600 text-sm leading-relaxed mb-5">"The guided surgery was remarkably comfortable. Minimal swelling, minimal downtime. I was back to work in 3 days. Truly impressed."</p>
+          <div class="flex items-center gap-3"><div class="w-9 h-9 bg-navy rounded-full flex items-center justify-center text-teal font-bold text-xs">ML</div><div><p class="text-navy font-semibold text-sm">Maria L.</p><p class="text-gray-400 text-xs">Single Implant</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16" data-reveal>
+        <div>
+          <span class="text-teal font-semibold text-sm uppercase tracking-wider">Get Started</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-navy mt-3 mb-6">Schedule Your Free Implant Consultation</h2>
+          <p class="text-gray-500 leading-relaxed mb-8">Every implant journey begins with a thorough evaluation. Our complimentary consultation includes a CBCT scan, treatment planning, and a detailed cost breakdown with financing options.</p>
+          <div class="space-y-4 text-sm text-gray-600">
+            <div class="flex items-center gap-3"><svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>2100 Arch Street, Suite 250, Philadelphia, PA 19103</div>
+            <div class="flex items-center gap-3"><svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>(215) 841-9320</div>
+            <div class="flex items-center gap-3"><svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Mon-Fri: 8:00 AM - 5:00 PM | Sat: By Appointment</div>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-8 border border-teal/10">
+          <form class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <input type="text" placeholder="Full Name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none text-sm bg-white">
+              <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none text-sm bg-white">
+            </div>
+            <input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none text-sm bg-white">
+            <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none text-sm bg-white text-gray-500">
+              <option>Procedure of interest...</option>
+              <option>Single Tooth Implant</option>
+              <option>All-on-4 Full Arch</option>
+              <option>Multiple Implants</option>
+              <option>Bone Grafting Evaluation</option>
+              <option>Second Opinion</option>
+            </select>
+            <textarea rows="3" placeholder="Tell us about your situation..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none text-sm bg-white resize-none"></textarea>
+            <button type="submit" class="w-full bg-teal text-white py-3.5 rounded-lg font-semibold hover:bg-teal-dark transition">Request Free Consultation</button>
           </form>
         </div>
-        <!-- Info Panel -->
-        <div class="lg:col-span-2 space-y-6">
-          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-primary text-lg mb-4">📍 Visit Us</h3>
-            <p class="text-gray-500 text-sm">1234 Market Street, Suite 500<br>Philadelphia, PA 19103</p>
-          </div>
-          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-primary text-lg mb-4">🕐 Office Hours</h3>
-            <div class="space-y-2 text-sm text-gray-500">
-              <div class="flex justify-between"><span>Monday - Friday</span><span class="font-medium text-primary">8:00 AM - 6:00 PM</span></div>
-              <div class="flex justify-between"><span>Saturday</span><span class="font-medium text-primary">9:00 AM - 3:00 PM</span></div>
-              <div class="flex justify-between"><span>Sunday</span><span class="font-medium text-gray-400">Closed</span></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-primary text-lg mb-4">📞 Contact</h3>
-            <p class="text-gray-500 text-sm">Phone: (215) 555-1234<br>Email: hello@precision.com</p>
-          </div>
-          <div class="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl h-48 flex items-center justify-center">
-            <span class="text-gray-500 text-sm font-medium">📍 Google Maps Embed</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-primary text-gray-400 py-12">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div>
-        <p class="text-white font-bold text-lg mb-1">Precision<span class="text-secondary">Implant</span> Studio</p>
-        <p class="text-sm">Advanced implantology for lasting results.</p>
-      </div>
-      <div class="text-sm text-center md:text-right">
-        <p>&copy; 2026 Apex Dental Studio. All rights reserved.</p>
-      </div>
+  <footer class="bg-navy text-gray-400 py-10 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div><p class="text-white font-bold text-lg">Precision<span class="text-teal"> Implant Center</span></p><p class="text-sm mt-1">Advanced implantology for lasting results.</p></div>
+      <p class="text-sm">&copy; 2026 Precision Implant Center. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Floating Chat FAB -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <button class="fab w-16 h-16 bg-secondary rounded-full shadow-xl flex items-center justify-center text-white text-2xl">
-      💬
-    </button>
-  </div>
-
   <script>
-    // Scroll reveal animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    document.querySelectorAll('#mob4 a').forEach(link => { link.addEventListener('click', () => { document.getElementById('mob4').classList.add('hidden'); document.querySelector('.hamburger').classList.remove('active'); }); });
   </script>
 </body>
 </html>

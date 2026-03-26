@@ -1,399 +1,198 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaCare Periodontics | Protect Your Foundation,</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1E293B',
-            secondary: '#94A3B8',
-            accent: '#D4AF37',
-            surface: '#F8FAFC',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-  <style>
-    .glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    .glass-dark { background: rgba(15,23,42,0.85); backdrop-filter: blur(20px); }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-    @keyframes slideUp { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
-    .marquee { animation: marquee 40s linear infinite; }
-    .card-hover { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(148,163,184,0.15); }
-    .before-after-slider { position:relative; overflow:hidden; }
-    .before-after-slider .after { position:absolute; top:0; left:0; width:50%; overflow:hidden; }
-    .fab { transition: all 0.3s; }
-    .fab:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(148,163,184,0.4); }
-    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s ease-out; }
-    [data-reveal].visible { opacity:1; transform:translateY(0); }
-  </style>
-</head>
-<body class="font-sans text-gray-800 bg-white antialiased">
-
-  <!-- Sticky Nav -->
-  <nav class="glass fixed top-0 w-full z-50 border-b border-white/20">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#" class="text-2xl font-bold text-primary">Nova<span class="text-secondary">Care</span></a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Services</a>
-        <a href="#gallery" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Before & After</a>
-        <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Reviews</a>
-        <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-secondary transition">Contact</a>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="tel:+12155551234" class="hidden sm:block text-sm font-medium text-gray-600 hover:text-secondary transition">📞 (215) 555-1234</a>
-        <a href="#contact" class="bg-secondary text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">Book Online</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="relative min-h-screen flex items-center bg-gradient-to-br from-primary to-primary overflow-hidden">
-    <div class="absolute inset-0 opacity-20">
-      <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1920&q=80" alt="Modern dental clinic" class="w-full h-full object-cover">
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-12 items-center">
-      <div class="animate-slide-up">
-        <div class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-1.5 mb-6">
-          <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
-          <span class="text-secondary text-sm font-medium">Now Accepting New Patients</span>
-        </div>
-        <h1 class="text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
-          Protect Your Foundation,<br><span class="text-secondary">Preserve</span> Your Smile.
-        </h1>
-        <p class="text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
-          Specialized periodontal care using laser therapy, regenerative techniques, and precision microsurgery for lasting gum health.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#contact" class="bg-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-teal-600 transition shadow-xl shadow-teal-500/30">
-            Book Free Consultation
-          </a>
-          <a href="#services" class="border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/10 transition">
-            View Our Services
-          </a>
-        </div>
-        <!-- Trust Badges -->
-        <div class="flex flex-wrap gap-6 mt-12">
-          <div class="flex items-center gap-2 text-gray-300">
-            <span class="text-yellow-400 text-xl">⭐</span>
-            <span class="text-sm font-medium">500+ 5-Star Reviews</span>
-          </div>
-          <div class="flex items-center gap-2 text-gray-300">
-            <span class="text-secondary text-xl">🏆</span>
-            <span class="text-sm font-medium">Top Periodontist 2026</span>
-          </div>
-          <div class="flex items-center gap-2 text-gray-300">
-            <span class="text-blue-400 text-xl">🛡️</span>
-            <span class="text-sm font-medium">Accepts Most Insurances</span>
-          </div>
-        </div>
-      </div>
-      <div class="hidden lg:block animate-float">
-        <img src="https://images.unsplash.com/photo-1551190822-a9ce113d0d15?w=800&q=80" alt="Happy patient" class="rounded-3xl shadow-2xl shadow-black/30 border-2 border-white/10">
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Our Expertise</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Comprehensive Dental Services</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">From routine checkups to complete smile makeovers, we offer everything under one roof.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Service Cards -->
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">🔬</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">Laser Gum Therapy</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Minimally invasive LANAP laser treatment to eliminate gum disease without surgery.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">🧬</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">Gum Regeneration</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Advanced grafting techniques to rebuild lost tissue and restore your gumline.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">🩺</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">Deep Cleanings</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Thorough scaling and root planing to halt periodontal disease progression.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 card-hover border border-gray-100" data-reveal>
-          <div class="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center mb-6">
-            <span class="text-2xl">🔧</span>
-          </div>
-          <h3 class="text-xl font-bold text-primary mb-3">Dental Implants</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-4">Periodontal expertise ensures optimal implant placement and long-term success.</p>
-          <a href="#" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 group">Learn More <span class="group-hover:translate-x-1 transition-transform">→</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Before & After Gallery -->
-  <section id="gallery" class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Results That Speak</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Before & After Gallery</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">See the stunning transformations our patients have experienced.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
-          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Before treatment" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
-              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
-              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
-            </div>
-          </div>
-          <div class="p-6 bg-white">
-            <h4 class="font-bold text-primary">Complete Smile Makeover</h4>
-            <p class="text-gray-500 text-sm mt-1">Veneers + Whitening</p>
-          </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
-          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
-            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Dental work" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
-              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
-              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
-            </div>
-          </div>
-          <div class="p-6 bg-white">
-            <h4 class="font-bold text-primary">Invisalign Treatment</h4>
-            <p class="text-gray-500 text-sm mt-1">12-month alignment</p>
-          </div>
-        </div>
-        <div class="rounded-2xl overflow-hidden shadow-lg card-hover" data-reveal>
-          <div class="relative h-64 bg-gradient-to-r from-gray-300 to-gray-100">
-            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Dental implant" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-red-500/20 to-green-500/20"></div>
-            <div class="absolute bottom-4 left-4 right-4 flex justify-between">
-              <span class="bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">Before</span>
-              <span class="bg-green-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">After</span>
-            </div>
-          </div>
-          <div class="p-6 bg-white">
-            <h4 class="font-bold text-primary">Full Implant Restoration</h4>
-            <p class="text-gray-500 text-sm mt-1">Single-day procedure</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Marquee -->
-  <section id="reviews" class="py-24 bg-primary overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 text-center mb-12">
-      <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Patient Stories</span>
-      <h2 class="text-4xl lg:text-5xl font-bold text-white mt-3">What Our Patients Say</h2>
-    </div>
-    <div class="flex gap-6 overflow-hidden">
-      <div class="flex gap-6 marquee">
-        <!-- Reviews (duplicated for seamless loop) -->
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Was told I'd lose my teeth to gum disease. Dr. Nakamura's laser treatment saved them all. Two years later, zero issues."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">FG</div>
-            <div><p class="text-white font-semibold text-sm">Frank G.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The gum grafting was painless and the results are remarkable. My receding gums look completely normal again."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">SB</div>
-            <div><p class="text-white font-semibold text-sm">Sandra B.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"After years of being told I needed surgery, NovaCare's laser approach was a game-changer. No cutting, fast recovery."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">HN</div>
-            <div><p class="text-white font-semibold text-sm">Henry N.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The thoroughness of care here is beyond anything I've experienced. They caught early gum disease others missed."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">LD</div>
-            <div><p class="text-white font-semibold text-sm">Linda D.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <!-- Duplicate set for seamless loop -->
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"Was told I'd lose my teeth to gum disease. Dr. Nakamura's laser treatment saved them all. Two years later, zero issues."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">FG</div>
-            <div><p class="text-white font-semibold text-sm">Frank G.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The gum grafting was painless and the results are remarkable. My receding gums look completely normal again."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">SB</div>
-            <div><p class="text-white font-semibold text-sm">Sandra B.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"After years of being told I needed surgery, NovaCare's laser approach was a game-changer. No cutting, fast recovery."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">HN</div>
-            <div><p class="text-white font-semibold text-sm">Henry N.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="min-w-[380px] bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-          <div class="flex gap-1 mb-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
-          <p class="text-gray-300 text-sm leading-relaxed mb-6">"The thoroughness of care here is beyond anything I've experienced. They caught early gum disease others missed."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-bold">LD</div>
-            <div><p class="text-white font-semibold text-sm">Linda D.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact / Booking -->
-  <section id="contact" class="py-24 bg-surface">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-secondary font-semibold text-sm uppercase tracking-wider">Get Started</span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-primary mt-3 mb-4">Book Your Appointment</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Schedule your visit today and take the first step toward your best smile.</p>
-      </div>
-      <div class="grid lg:grid-cols-5 gap-12" data-reveal>
-        <!-- Form -->
-        <div class="lg:col-span-3 bg-white rounded-3xl p-10 shadow-xl border border-gray-100">
-          <form class="space-y-6">
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Full Name</label>
-                <input type="text" placeholder="John Smith" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Email</label>
-                <input type="email" placeholder="john@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Phone</label>
-                <input type="tel" placeholder="(215) 555-0000" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-primary mb-2 block">Preferred Date</label>
-                <input type="date" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm">
-              </div>
-            </div>
-            <div>
-              <label class="text-sm font-semibold text-primary mb-2 block">Reason for Visit</label>
-              <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition text-sm text-gray-500">
-                <option>Select a service...</option>
-                <option>General Checkup & Cleaning</option>
-                <option>Cosmetic Consultation</option>
-                <option>Invisalign Evaluation</option>
-                <option>Dental Implants</option>
-                <option>Emergency Visit</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <button type="submit" class="w-full bg-secondary text-white py-4 rounded-xl font-semibold text-lg hover:bg-teal-600 transition shadow-lg shadow-teal-500/20">
-              Request Appointment →
-            </button>
-          </form>
-        </div>
-        <!-- Info Panel -->
-        <div class="lg:col-span-2 space-y-6">
-          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-primary text-lg mb-4">📍 Visit Us</h3>
-            <p class="text-gray-500 text-sm">1234 Market Street, Suite 500<br>Philadelphia, PA 19103</p>
-          </div>
-          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-primary text-lg mb-4">🕐 Office Hours</h3>
-            <div class="space-y-2 text-sm text-gray-500">
-              <div class="flex justify-between"><span>Monday - Friday</span><span class="font-medium text-primary">8:00 AM - 6:00 PM</span></div>
-              <div class="flex justify-between"><span>Saturday</span><span class="font-medium text-primary">9:00 AM - 3:00 PM</span></div>
-              <div class="flex justify-between"><span>Sunday</span><span class="font-medium text-gray-400">Closed</span></div>
-            </div>
-          </div>
-          <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-            <h3 class="font-bold text-primary text-lg mb-4">📞 Contact</h3>
-            <p class="text-gray-500 text-sm">Phone: (215) 555-1234<br>Email: hello@novacare.com</p>
-          </div>
-          <div class="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl h-48 flex items-center justify-center">
-            <span class="text-gray-500 text-sm font-medium">📍 Google Maps Embed</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-primary text-gray-400 py-12">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div>
-        <p class="text-white font-bold text-lg mb-1">Nova<span class="text-secondary">Care</span> Studio</p>
-        <p class="text-sm">Advanced gum care and reconstruction.</p>
-      </div>
-      <div class="text-sm text-center md:text-right">
-        <p>&copy; 2026 Apex Dental Studio. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating Chat FAB -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <button class="fab w-16 h-16 bg-secondary rounded-full shadow-xl flex items-center justify-center text-white text-2xl">
-      💬
-    </button>
-  </div>
-
-  <script>
-    // Scroll reveal animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaCare Periodontics | Gum Health Specialists in Collingswood, NJ</title>
+    <meta name="description" content="Expert periodontal care in Collingswood, NJ. Laser gum treatment, dental implants, and gum disease solutions at NovaCare Periodontics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { navy:'#0a192f','navy-light':'#112240',teal:'#14b8a6','teal-dark':'#0d9488','teal-light':'#ccfbf1',cream:'#f0fdfa',slate:'#8892b0' }
+                }
+            }
         }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
-  </script>
+    </script>
+    <style>
+        body{font-family:'Inter',sans-serif;overflow-x:hidden}
+        .reveal{opacity:0;transform:translateY(25px);transition:all .75s cubic-bezier(.5,0,0,1)}.reveal.active{opacity:1;transform:translateY(0)}
+        .d1{transition-delay:100ms}.d2{transition-delay:200ms}.d3{transition-delay:300ms}
+        .glass-nav{background:rgba(10,25,47,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(20,184,166,.1)}
+        /* Timeline dots */
+        .timeline-dot{width:12px;height:12px;border-radius:50%;background:#14b8a6;position:relative;flex-shrink:0}
+        .timeline-dot::after{content:'';position:absolute;top:12px;left:50%;transform:translateX(-50%);width:2px;height:calc(100% + 24px);background:rgba(20,184,166,.2)}
+        .timeline-item:last-child .timeline-dot::after{display:none}
+    </style>
+</head>
+<body class="bg-navy text-white antialiased">
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-[68px] flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5">
+                <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                <span class="font-bold text-lg">NovaCare <span class="text-teal font-light">Perio</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+                <a href="#services" class="text-slate hover:text-teal transition-colors">Services</a>
+                <a href="#about" class="text-slate hover:text-teal transition-colors">About</a>
+                <a href="#reviews" class="text-slate hover:text-teal transition-colors">Reviews</a>
+                <a href="#booking" class="bg-teal text-navy px-6 py-2.5 rounded-full font-semibold hover:bg-teal-dark hover:text-white transition-all shadow-lg shadow-teal/20">Get Evaluated</a>
+            </div>
+            <button id="mob-btn" class="md:hidden text-white p-2"><svg id="ico-o" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg><svg id="ico-c" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+        </div>
+        <div id="mob-menu" class="hidden md:hidden bg-navy-light border-t border-teal/10 px-6 py-4 space-y-2">
+            <a href="#services" class="ml block py-2 text-slate hover:text-teal">Services</a>
+            <a href="#about" class="ml block py-2 text-slate hover:text-teal">About</a>
+            <a href="#reviews" class="ml block py-2 text-slate hover:text-teal">Reviews</a>
+            <a href="#booking" class="ml block py-3 mt-2 bg-teal text-navy text-center rounded-xl font-semibold">Get Evaluated</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute top-10 right-[-10%] w-[500px] h-[500px] bg-teal/8 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center py-16">
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-teal/20 text-sm text-teal font-semibold mb-6">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Collingswood, NJ -- Periodontal Specialists
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight mb-6">Protect Your <br><span class="text-teal">Foundation</span></h1>
+                <p class="text-lg text-slate max-w-lg leading-relaxed mb-8">Board-certified periodontists specializing in laser gum treatment, implant placement, and advanced tissue regeneration. Healthy gums are the foundation of every great smile.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                    <a href="#booking" class="bg-teal text-navy text-center px-8 py-4 rounded-full font-bold text-lg hover:-translate-y-1 transition-transform shadow-lg shadow-teal/20">Schedule Evaluation</a>
+                    <a href="tel:8565550156" class="flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-white border border-white/15 hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>(856) 555-0156
+                    </a>
+                </div>
+                <div class="grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
+                    <div><p class="text-2xl font-bold text-teal">2,000+</p><p class="text-xs text-slate mt-1">Implants Placed</p></div>
+                    <div><p class="text-2xl font-bold text-teal">97%</p><p class="text-xs text-slate mt-1">Success Rate</p></div>
+                    <div><p class="text-2xl font-bold text-teal">18</p><p class="text-xs text-slate mt-1">Years Practice</p></div>
+                </div>
+            </div>
+            <div class="relative reveal d2">
+                <div class="rounded-3xl overflow-hidden shadow-2xl shadow-black/30 border border-white/10">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000" alt="Periodontal treatment" class="w-full h-[500px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent rounded-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-24 bg-navy-light border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="max-w-2xl mb-16 reveal"><p class="text-teal font-semibold tracking-wider uppercase text-sm mb-3">Periodontal Services</p><h2 class="text-4xl md:text-5xl font-bold mb-5">Specialized Gum Care</h2><p class="text-slate text-lg">From early gingivitis to advanced periodontal disease, we provide targeted treatment to restore and maintain gum health.</p></div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:-translate-y-2 hover:border-teal/30 transition-all duration-300 reveal"><div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-6"><svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><h4 class="text-xl font-bold mb-3">LANAP Laser Therapy</h4><p class="text-slate text-sm leading-relaxed mb-4">FDA-cleared laser treatment that eliminates diseased tissue while preserving healthy gums. No cutting, no sutures, faster healing.</p><a href="#booking" class="text-teal text-sm font-semibold">Learn more &#8594;</a></div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:-translate-y-2 hover:border-teal/30 transition-all duration-300 reveal d1"><div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-6"><svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg></div><h4 class="text-xl font-bold mb-3">Dental Implants</h4><p class="text-slate text-sm leading-relaxed mb-4">Periodontist-placed implants with bone grafting expertise for optimal outcomes, even in complex cases with significant bone loss.</p><a href="#booking" class="text-teal text-sm font-semibold">Learn more &#8594;</a></div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:-translate-y-2 hover:border-teal/30 transition-all duration-300 reveal d2"><div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-6"><svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><h4 class="text-xl font-bold mb-3">Gum Grafting</h4><p class="text-slate text-sm leading-relaxed mb-4">Connective tissue and free gingival grafts to restore gum coverage, reduce sensitivity, and protect exposed tooth roots.</p><a href="#booking" class="text-teal text-sm font-semibold">Learn more &#8594;</a></div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:-translate-y-2 hover:border-teal/30 transition-all duration-300 reveal d3"><div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-6"><svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div><h4 class="text-xl font-bold mb-3">Bone Regeneration</h4><p class="text-slate text-sm leading-relaxed mb-4">Advanced bone grafting and guided tissue regeneration to rebuild lost jawbone and support long-term implant stability.</p><a href="#booking" class="text-teal text-sm font-semibold">Learn more &#8594;</a></div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:-translate-y-2 hover:border-teal/30 transition-all duration-300 reveal d3"><div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-6"><svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h4 class="text-xl font-bold mb-3">Scaling & Root Planing</h4><p class="text-slate text-sm leading-relaxed mb-4">Deep cleaning below the gum line to remove bacterial deposits and smooth root surfaces, halting disease progression.</p><a href="#booking" class="text-teal text-sm font-semibold">Learn more &#8594;</a></div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-8 hover:-translate-y-2 hover:border-teal/30 transition-all duration-300 reveal d3"><div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-6"><svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></div><h4 class="text-xl font-bold mb-3">Crown Lengthening</h4><p class="text-slate text-sm leading-relaxed mb-4">Reshaping gum and bone tissue to expose more natural tooth structure for restorative work or a more balanced smile.</p><a href="#booking" class="text-teal text-sm font-semibold">Learn more &#8594;</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 bg-navy border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal"><img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800" alt="Dr. James Novak" class="w-full h-[500px] object-cover rounded-3xl border border-white/10 shadow-2xl"></div>
+            <div class="reveal d2">
+                <p class="text-teal font-semibold tracking-wider uppercase text-sm mb-3">The Periodontist</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Dr. James Novak, DMD, MS</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6">Board-certified periodontist with 18 years of focused experience in gum disease treatment, implant surgery, and tissue regeneration. Dr. Novak completed his periodontal residency at Rutgers School of Dental Medicine and is a Diplomate of the American Board of Periodontology.</p>
+                <p class="text-gray-400 leading-relaxed mb-8">He is one of few periodontists in South Jersey certified in LANAP laser therapy, offering patients a minimally invasive alternative to traditional gum surgery. His practice philosophy centers on saving teeth whenever possible and providing the most conservative effective treatment.</p>
+                <div class="flex flex-wrap gap-4">
+                    <div class="bg-white/5 border border-white/10 px-5 py-3 rounded-xl"><p class="text-xl font-bold text-teal">Rutgers</p><p class="text-xs text-slate">Residency</p></div>
+                    <div class="bg-white/5 border border-white/10 px-5 py-3 rounded-xl"><p class="text-xl font-bold text-teal">DABP</p><p class="text-xs text-slate">Board Certified</p></div>
+                    <div class="bg-white/5 border border-white/10 px-5 py-3 rounded-xl"><p class="text-xl font-bold text-teal">LANAP</p><p class="text-xs text-slate">Certified</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews - Timeline style -->
+    <section id="reviews" class="py-24 bg-navy-light border-t border-white/5">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16 reveal"><p class="text-teal font-semibold tracking-wider uppercase text-sm mb-3">Patient Outcomes</p><h2 class="text-3xl md:text-4xl font-bold">Recovery Stories</h2></div>
+            <div class="space-y-8 reveal">
+                <div class="timeline-item flex gap-6">
+                    <div class="flex flex-col items-center pt-1"><div class="timeline-dot"></div></div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 flex-1">
+                        <div class="flex items-center gap-1 text-teal mb-3"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+                        <p class="text-gray-300 font-light leading-relaxed mb-4">"I was told I would lose three teeth due to advanced gum disease. Dr. Novak performed LANAP laser therapy and saved every single one. Two years later, my gums are healthier than ever."</p>
+                        <p class="text-sm font-semibold text-white">Patricia M. <span class="text-slate font-normal">-- LANAP Patient, Haddonfield</span></p>
+                    </div>
+                </div>
+                <div class="timeline-item flex gap-6">
+                    <div class="flex flex-col items-center pt-1"><div class="timeline-dot"></div></div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 flex-1">
+                        <div class="flex items-center gap-1 text-teal mb-3"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+                        <p class="text-gray-300 font-light leading-relaxed mb-4">"My general dentist referred me to Dr. Novak for receding gums. The gum graft procedure was painless and my sensitivity is completely gone."</p>
+                        <p class="text-sm font-semibold text-white">Daniel R. <span class="text-slate font-normal">-- Gum Graft Patient, Cherry Hill</span></p>
+                    </div>
+                </div>
+                <div class="timeline-item flex gap-6">
+                    <div class="flex flex-col items-center pt-1"><div class="timeline-dot"></div></div>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6 flex-1">
+                        <div class="flex items-center gap-1 text-teal mb-3"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+                        <p class="text-gray-300 font-light leading-relaxed mb-4">"Needed bone grafting before implants. Dr. Novak rebuilt the bone and placed the implant 4 months later. The entire process was smooth and well-coordinated."</p>
+                        <p class="text-sm font-semibold text-white">Margaret S. <span class="text-slate font-normal">-- Implant Patient, Collingswood</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking" class="py-24 bg-navy border-t border-white/5">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="bg-navy-light rounded-3xl border border-white/10 p-8 md:p-12 reveal">
+                <div class="grid lg:grid-cols-5 gap-12">
+                    <div class="lg:col-span-2 space-y-6">
+                        <h3 class="text-2xl font-bold">Contact Us</h3>
+                        <div class="flex items-start gap-3"><svg class="w-5 h-5 text-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><div><p class="text-teal font-semibold text-sm">Location</p><p class="text-slate text-sm mt-1">820 Haddon Avenue, Suite 200<br>Collingswood, NJ 08108</p></div></div>
+                        <div class="flex items-start gap-3"><svg class="w-5 h-5 text-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg><div><p class="text-teal font-semibold text-sm">Phone</p><p class="text-slate text-sm mt-1">(856) 555-0156</p></div></div>
+                        <div class="flex items-start gap-3"><svg class="w-5 h-5 text-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><div><p class="text-teal font-semibold text-sm">Hours</p><p class="text-slate text-sm mt-1">Mon - Fri: 8am - 5pm<br>Sat: By Appointment</p></div></div>
+                    </div>
+                    <div class="lg:col-span-3">
+                        <h3 class="text-2xl font-bold mb-6">Request Evaluation</h3>
+                        <form onsubmit="event.preventDefault();alert('Evaluation request sent! We will contact you shortly.');" class="space-y-5">
+                            <div class="grid md:grid-cols-2 gap-5"><div><label class="text-sm font-medium text-slate block mb-1.5">Full Name</label><input type="text" required placeholder="Jane Doe" class="w-full bg-navy border border-white/10 px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal/50 placeholder:text-gray-600"></div><div><label class="text-sm font-medium text-slate block mb-1.5">Phone</label><input type="tel" required placeholder="(856) 555-0100" class="w-full bg-navy border border-white/10 px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal/50 placeholder:text-gray-600"></div></div>
+                            <div><label class="text-sm font-medium text-slate block mb-1.5">Referring Dentist (Optional)</label><input type="text" placeholder="Dr. Smith, Cherry Hill" class="w-full bg-navy border border-white/10 px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal/50 placeholder:text-gray-600"></div>
+                            <div><label class="text-sm font-medium text-slate block mb-1.5">Describe your concern</label><textarea rows="3" placeholder="Bleeding gums, loose teeth, referral for implants..." class="w-full bg-navy border border-white/10 px-4 py-3 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-teal/50 placeholder:text-gray-600 resize-none"></textarea></div>
+                            <button type="submit" class="w-full bg-teal text-navy font-bold py-4 rounded-xl shadow-lg shadow-teal/20 hover:-translate-y-1 hover:bg-teal-dark hover:text-white transition-all">Request Periodontal Evaluation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-navy pt-12 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <a href="#" class="flex items-center gap-2"><svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg><span class="font-bold text-white">NovaCare <span class="text-teal font-light">Periodontics</span></span></a>
+            <div class="flex gap-6 text-sm text-slate"><a href="#services" class="hover:text-teal">Services</a><a href="#about" class="hover:text-teal">About</a><a href="#reviews" class="hover:text-teal">Reviews</a><a href="#booking" class="hover:text-teal">Contact</a></div>
+            <p class="text-xs text-slate">&copy; <span id="yr"></span> NovaCare Periodontics. Collingswood, NJ.</p>
+        </div>
+    </footer>
+
+    <button onclick="alert('Chat...')" class="fixed bottom-6 right-6 w-14 h-14 bg-teal text-navy rounded-full shadow-lg shadow-teal/30 flex items-center justify-center hover:scale-110 hover:bg-teal-dark hover:text-white transition-all z-50"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></button>
+
+    <script>
+        document.getElementById('yr').textContent=new Date().getFullYear();
+        const mb=document.getElementById('mob-btn'),mm=document.getElementById('mob-menu'),io=document.getElementById('ico-o'),ic=document.getElementById('ico-c');
+        mb.addEventListener('click',()=>{mm.classList.toggle('hidden');io.classList.toggle('hidden');ic.classList.toggle('hidden');});
+        document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>{mm.classList.add('hidden');io.classList.remove('hidden');ic.classList.add('hidden');}));
+        const ro=new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');o.unobserve(e.target);}}),{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+    </script>
 </body>
 </html>

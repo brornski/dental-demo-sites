@@ -3,683 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Align Orthodontics | Premium Invisalign & Braces in Princeton, NJ</title>
-    
-    <!-- Google Fonts: Inter -->
+    <title>Align Orthodontics | Invisalign & Braces in Marlton, NJ</title>
+    <meta name="description" content="Top-rated orthodontist in Marlton, NJ. Invisalign Diamond Provider, clear braces, and accelerated treatment at Align Orthodontics.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        brand: {
-                            primary: '#0C4A6E', // sky-900
-                            secondary: '#38BDF8', // sky-400
-                            accent: '#0EA5E9', // sky-500
-                            light: '#E0F2FE', // sky-100
-                            ultralight: '#F0F9FF', // sky-50
-                        }
-                    },
-                    boxShadow: {
-                        'soft': '0 20px 40px -15px rgba(12, 74, 110, 0.1)',
-                        'glow': '0 0 20px rgba(56, 189, 248, 0.4)',
+                        navy: '#0a192f',
+                        'navy-light': '#112240',
+                        teal: '#14b8a6',
+                        'teal-dark': '#0d9488',
+                        'teal-light': '#99f6e4',
+                        cream: '#f0fdfa',
+                        slate: '#8892b0',
                     }
                 }
             }
         }
     </script>
-
-    <!-- Custom CSS -->
     <style>
-        body {
-            background-color: #FAFAFA;
-            background-image: radial-gradient(at 0% 0%, hsla(200,100%,95%,1) 0px, transparent 50%),
-                              radial-gradient(at 100% 100%, hsla(199,100%,90%,1) 0px, transparent 50%);
-            background-attachment: fixed;
-            overflow-x: hidden;
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .reveal { opacity: 0; transform: translateY(28px); transition: all 0.75s cubic-bezier(0.5,0,0,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .d1{transition-delay:100ms} .d2{transition-delay:200ms} .d3{transition-delay:300ms} .d4{transition-delay:400ms}
+
+        /* Floating pill nav */
+        .pill-nav {
+            background: rgba(10,25,47,0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(20,184,166,0.12);
         }
 
-        /* Glassmorphism Utilities */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+        /* Bento grid */
+        .bento { display: grid; gap: 1rem; }
+        @media (min-width: 768px) {
+            .bento { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; }
+            .bento-tall { grid-row: span 2; }
         }
 
-        .glass-dark {
-            background: rgba(12, 74, 110, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-        }
-
-        /* Scroll Reveal Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-delay-1 { transition-delay: 100ms; }
-        .reveal-delay-2 { transition-delay: 200ms; }
-        .reveal-delay-3 { transition-delay: 300ms; }
-        
-        /* Image Clip Path for Tech Vibe */
-        .tech-clip {
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
-        }
-
-        /* Marquee Animation */
-        .marquee-wrapper {
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            display: flex;
-        }
-        .marquee-wrapper::before,
-        .marquee-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 150px;
-            height: 100%;
-            z-index: 2;
-        }
-        .marquee-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, #F0F9FF, transparent);
-        }
-        .marquee-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, #F0F9FF, transparent);
-        }
-        .marquee-content {
-            display: flex;
-            animation: scroll 30s linear infinite;
-        }
-        .marquee-content:hover {
-            animation-play-state: paused;
-        }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Scrolls half since content is duplicated */
-        }
+        /* Horizontal scroll snap for testimonials */
+        .snap-x-container { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+        .snap-x-container::-webkit-scrollbar { display: none; }
+        .snap-item { scroll-snap-align: start; }
     </style>
 </head>
-<body class="text-brand-primary antialiased">
+<body class="bg-white text-navy antialiased">
 
-    <!-- 1. Navigation -->
-    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="glass-nav rounded-2xl px-6 py-3 flex justify-between items-center shadow-sm">
-                <a href="#" class="flex items-center gap-2 group">
-                    <span class="text-3xl transition-transform group-hover:rotate-12">✨</span>
-                    <span class="text-xl md:text-2xl font-black tracking-tight text-brand-primary">Align<span class="text-brand-secondary">Orthodontics</span></span>
-                </a>
-                
-                <nav class="hidden md:flex gap-8 font-semibold text-sm">
-                    <a href="#services" class="hover:text-brand-secondary transition-colors">Services</a>
-                    <a href="#gallery" class="hover:text-brand-secondary transition-colors">Smile Gallery</a>
-                    <a href="#testimonials" class="hover:text-brand-secondary transition-colors">Reviews</a>
-                    <a href="#contact" class="hover:text-brand-secondary transition-colors">Contact</a>
-                </nav>
-
-                <div class="flex items-center gap-4">
-                    <a href="#contact" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-brand-primary rounded-xl hover:bg-brand-secondary hover:shadow-glow transition-all duration-300">
-                        Book Online 🗓️
-                    </a>
-                    <button class="md:hidden text-2xl focus:outline-none" aria-label="Menu">
-                        🍔
-                    </button>
-                </div>
+    <!-- Floating Pill Nav (centered) -->
+    <div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl">
+        <nav class="pill-nav rounded-full px-3 py-2 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 pl-3">
+                <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                <span class="font-bold text-white text-sm tracking-tight hidden sm:inline">ALIGN <span class="text-teal font-light">Ortho</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-1 text-sm">
+                <a href="#treatments" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium">Treatments</a>
+                <a href="#about" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium">About</a>
+                <a href="#reviews" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium">Reviews</a>
+                <a href="#contact" class="px-4 py-2 rounded-full text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium">Contact</a>
             </div>
+            <a href="#contact" class="bg-teal text-navy px-5 py-2 rounded-full font-semibold text-sm hover:bg-teal-dark hover:text-white transition-all shadow-lg shadow-teal/20">
+                Start Consult
+            </a>
+            <button id="mob-btn" class="md:hidden text-white p-2 focus:outline-none">
+                <svg id="ico-bars" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="ico-x" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </nav>
+        <div id="mob-menu" class="hidden md:hidden pill-nav rounded-2xl mt-2 px-5 py-4 space-y-2">
+            <a href="#treatments" class="mob-lnk block py-2 text-gray-300 hover:text-teal font-medium text-sm">Treatments</a>
+            <a href="#about" class="mob-lnk block py-2 text-gray-300 hover:text-teal font-medium text-sm">About</a>
+            <a href="#reviews" class="mob-lnk block py-2 text-gray-300 hover:text-teal font-medium text-sm">Reviews</a>
+            <a href="#contact" class="mob-lnk block py-2 text-gray-300 hover:text-teal font-medium text-sm">Contact</a>
+            <a href="#contact" class="mob-lnk block py-3 mt-2 bg-teal text-navy text-center rounded-xl font-semibold text-sm">Start Consult</a>
         </div>
-    </header>
+    </div>
 
-    <!-- 2. Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-16">
-            
-            <!-- Hero Text -->
-            <div class="w-full lg:w-1/2 reveal">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-light text-brand-accent font-bold text-sm mb-6 border border-brand-secondary/30">
-                    <span>📍 Princeton's Premier Orthodontist</span>
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-navy via-navy to-navy-light pt-24 pb-16 overflow-hidden">
+        <div class="absolute top-20 right-[-10%] w-[500px] h-[500px] bg-teal/8 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-teal/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-teal/20 text-sm text-teal font-semibold mb-6">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Marlton, NJ -- Invisalign Diamond Provider
                 </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
-                    Design Your <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-secondary to-brand-primary">Dream Smile.</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-white mb-6">
+                    Straighter Teeth.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-teal to-teal-light">Zero Compromise.</span>
                 </h1>
-                <p class="text-lg md:text-xl text-brand-primary/80 mb-8 font-medium max-w-xl">
-                    Experience cutting-edge Invisalign and modern orthodontic care tailored for teens and adults. Faster treatment. Hidden aligners. Brilliant results.
+                <p class="text-lg text-slate max-w-lg leading-relaxed mb-8">
+                    Cutting-edge orthodontics using digital scanning, AI treatment planning, and Invisalign Diamond-level expertise. Beautiful alignment, faster results, total comfort.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a href="#contact" class="px-8 py-4 text-center text-white font-bold bg-gradient-to-r from-brand-primary to-brand-secondary rounded-2xl shadow-soft hover:shadow-glow hover:-translate-y-1 transition-all duration-300">
-                        Start Virtual Consult 🚀
+                    <a href="#contact" class="bg-teal text-navy text-center px-8 py-4 rounded-full font-bold text-lg hover:-translate-y-1 transition-transform shadow-lg shadow-teal/20">
+                        Free Consultation
                     </a>
-                    <a href="#services" class="px-8 py-4 text-center font-bold text-brand-primary bg-white rounded-2xl shadow-soft hover:bg-brand-ultralight hover:-translate-y-1 transition-all duration-300 border border-brand-light">
-                        Explore Treatments 🔍
+                    <a href="tel:8565550145" class="flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-white border border-white/15 hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        (856) 555-0145
                     </a>
                 </div>
-
-                <!-- Trust Badges -->
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-brand-primary/10">
+                <div class="flex flex-wrap gap-8 pt-6 border-t border-white/10">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        <span class="text-sm text-gray-400">Diamond+ Provider</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span class="text-sm text-gray-400">30% Faster Results</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <span class="text-sm text-gray-400">3D Digital Scanning</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative reveal d2">
+                <div class="rounded-3xl overflow-hidden shadow-2xl shadow-black/30 border border-white/10">
+                    <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1000" alt="Perfect smile with Invisalign" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-1000">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent rounded-3xl"></div>
+                </div>
+                <div class="absolute -bottom-5 left-6 bg-navy/90 backdrop-blur-md border border-teal/20 rounded-2xl p-4 flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-teal/10 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-teal" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
                     <div>
-                        <div class="text-2xl mb-1">💎</div>
-                        <div class="font-bold text-sm">Diamond Plus</div>
-                        <div class="text-xs text-brand-primary/60">Invisalign Provider</div>
+                        <p class="text-white font-bold">4,500+</p>
+                        <p class="text-xs text-gray-400">Smiles Aligned</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments - Bento Grid -->
+    <section id="treatments" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <p class="text-teal font-semibold tracking-wider uppercase text-sm mb-3">Our Treatments</p>
+                <h2 class="text-3xl md:text-5xl font-extrabold mb-5">Solutions for Every Smile</h2>
+                <p class="text-navy/60 text-lg">Whether you prefer invisible aligners or want the fastest path to straight teeth, we have the right treatment for you.</p>
+            </div>
+            <div class="bento">
+                <!-- Tall card -->
+                <div class="bento-tall bg-navy rounded-2xl p-8 text-white flex flex-col justify-between min-h-[280px] md:min-h-0 reveal">
                     <div>
-                        <div class="text-2xl mb-1">📈</div>
-                        <div class="font-bold text-sm">5000+</div>
-                        <div class="text-xs text-brand-primary/60">Smiles Transformed</div>
+                        <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3">Invisalign</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Custom clear aligners designed with iTero 3D scanning. Virtually invisible, completely removable, and backed by Diamond Provider expertise. Most cases finish in 12-18 months.</p>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="text-2xl mb-1">🏆</div>
-                        <div class="font-bold text-sm">Top Dentist</div>
-                        <div class="text-xs text-brand-primary/60">NJ Monthly 2025</div>
-                    </div>
+                    <a href="#contact" class="text-teal text-sm font-semibold hover:text-teal-light transition-colors mt-6">Get started &#8594;</a>
                 </div>
-            </div>
-
-            <!-- Hero Image -->
-            <div class="w-full lg:w-1/2 relative reveal reveal-delay-2">
-                <!-- Decorative Elements -->
-                <div class="absolute -inset-4 bg-gradient-to-tr from-brand-secondary/20 to-transparent rounded-[3rem] blur-2xl z-0"></div>
-                <div class="absolute -bottom-8 -left-8 bg-white p-4 rounded-2xl shadow-xl z-20 animate-bounce glass-card" style="animation-duration: 3s;">
-                    <div class="flex gap-2 text-brand-secondary">⭐⭐⭐⭐⭐</div>
-                    <div class="text-sm font-bold mt-1">"Life changing results!"</div>
-                </div>
-                
-                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1000&auto=format&fit=crop" 
-                     alt="Happy confident young woman smiling brightly" 
-                     class="relative z-10 w-full h-[600px] object-cover rounded-3xl tech-clip shadow-soft border-4 border-white/50">
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Services Grid -->
-    <section id="services" class="py-24 bg-white/40">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Precision Orthodontics</h2>
-                <p class="text-lg text-brand-primary/70 max-w-2xl mx-auto font-medium">State-of-the-art technology meets personalized care. Discover the perfect treatment path for your lifestyle.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-soft group reveal reveal-delay-1">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-light flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                        🦷
+                <!-- Regular cards -->
+                <div class="bg-white rounded-2xl p-7 border border-navy/5 hover:-translate-y-2 transition-transform duration-300 reveal d1">
+                    <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Invisalign Clear Aligners</h3>
-                    <p class="text-brand-primary/70 text-sm mb-4">The ultimate discreet solution. Custom 3D-printed aligners that straighten teeth invisibly and comfortably.</p>
-                    <a href="#" class="text-brand-secondary font-bold text-sm inline-flex items-center hover:text-brand-accent">Learn more <span>→</span></a>
+                    <h4 class="text-lg font-bold mb-2">AcceleDent</h4>
+                    <p class="text-navy/55 text-sm leading-relaxed mb-4">FDA-cleared micro-pulse technology that accelerates tooth movement by up to 50%, reducing overall treatment time.</p>
+                    <a href="#contact" class="text-teal text-sm font-semibold">Learn more &#8594;</a>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-soft group reveal reveal-delay-2">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-light flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                        🤖
+                <div class="bg-white rounded-2xl p-7 border border-navy/5 hover:-translate-y-2 transition-transform duration-300 reveal d2">
+                    <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Accelerated Treatment</h3>
-                    <p class="text-brand-primary/70 text-sm mb-4">Using high-frequency vibration and photobiomodulation to cut your treatment time by up to 50%.</p>
-                    <a href="#" class="text-brand-secondary font-bold text-sm inline-flex items-center hover:text-brand-accent">Learn more <span>→</span></a>
+                    <h4 class="text-lg font-bold mb-2">Clear Braces</h4>
+                    <p class="text-navy/55 text-sm leading-relaxed mb-4">Ceramic brackets that blend with your teeth, offering the reliability of braces with a far more discreet appearance.</p>
+                    <a href="#contact" class="text-teal text-sm font-semibold">Learn more &#8594;</a>
                 </div>
-
-                <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-soft group reveal reveal-delay-3">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-light flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                        📱
+                <div class="bg-white rounded-2xl p-7 border border-navy/5 hover:-translate-y-2 transition-transform duration-300 reveal d3">
+                    <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Teen Orthodontics</h3>
-                    <p class="text-brand-primary/70 text-sm mb-4">Invisalign Teen features compliance indicators and accommodates erupting teeth. No more metal mouth.</p>
-                    <a href="#" class="text-brand-secondary font-bold text-sm inline-flex items-center hover:text-brand-accent">Learn more <span>→</span></a>
+                    <h4 class="text-lg font-bold mb-2">Traditional Braces</h4>
+                    <p class="text-navy/55 text-sm leading-relaxed mb-4">Modern low-profile metal brackets with heat-activated wires for the most precise control over complex tooth movements.</p>
+                    <a href="#contact" class="text-teal text-sm font-semibold">Learn more &#8594;</a>
                 </div>
-
-                <!-- Card 4 -->
-                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-soft group reveal reveal-delay-1">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-light flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                        ⚙️
+                <div class="bg-white rounded-2xl p-7 border border-navy/5 hover:-translate-y-2 transition-transform duration-300 reveal d4">
+                    <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Advanced Braces</h3>
-                    <p class="text-brand-primary/70 text-sm mb-4">Low-profile clear ceramic and self-ligating metal braces for complex cases requiring maximum control.</p>
-                    <a href="#" class="text-brand-secondary font-bold text-sm inline-flex items-center hover:text-brand-accent">Learn more <span>→</span></a>
+                    <h4 class="text-lg font-bold mb-2">Digital Monitoring</h4>
+                    <p class="text-navy/55 text-sm leading-relaxed mb-4">Remote check-ins via our app mean fewer in-office visits while ensuring your treatment stays precisely on track.</p>
+                    <a href="#contact" class="text-teal text-sm font-semibold">Learn more &#8594;</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Before / After Gallery -->
-    <section id="gallery" class="py-24 bg-brand-ultralight">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                <div class="max-w-2xl">
-                    <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Real Results. <br>Real Confidence.</h2>
-                    <p class="text-lg text-brand-primary/70 font-medium">Swipe through some of our favorite smile transformations. Achieved faster than ever with our tech-forward approach.</p>
+    <!-- About -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800" alt="Dr. Priya Sharma" class="w-full h-[480px] object-cover rounded-3xl shadow-xl">
                 </div>
-                <a href="#contact" class="hidden md:inline-block mt-6 px-6 py-3 font-bold text-brand-primary bg-white rounded-xl shadow-sm border border-brand-secondary/20 hover:bg-brand-light transition-colors">
-                    Start Your Journey 📸
-                </a>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Gallery Item 1 -->
-                <div class="relative group rounded-3xl overflow-hidden shadow-soft reveal reveal-delay-1">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" alt="Smile transformation 1" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/90 via-brand-primary/20 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 left-6 right-6 text-white">
-                        <span class="px-3 py-1 bg-brand-secondary rounded-full text-xs font-bold mb-2 inline-block">Invisalign</span>
-                        <h4 class="text-xl font-bold">Severe Crowding Resolved</h4>
-                        <p class="text-sm text-white/80">14 Months Treatment</p>
+                <div class="reveal d2">
+                    <p class="text-teal font-semibold tracking-wider uppercase text-sm mb-3">About the Orthodontist</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Dr. Priya Sharma, DMD, MS</h2>
+                    <p class="text-navy/70 text-lg leading-relaxed mb-6">
+                        Dr. Sharma is a board-certified orthodontist and Invisalign Diamond+ Provider, placing her in the top 1% of Invisalign practitioners nationally. After completing her orthodontic residency at the University of Pennsylvania, she launched Align Orthodontics with a mission to bring technology-driven, patient-centered care to South Jersey.
+                    </p>
+                    <p class="text-navy/60 leading-relaxed mb-8">
+                        Her practice uses iTero Element 5D scanning, AI-powered treatment simulation, and remote monitoring to deliver faster results with fewer appointments. Every treatment plan is customized to your unique dental anatomy, lifestyle, and goals.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-cream px-5 py-3 rounded-xl text-center border border-navy/5">
+                            <p class="text-2xl font-bold text-teal">4,500+</p>
+                            <p class="text-xs text-navy/50">Patients Treated</p>
+                        </div>
+                        <div class="bg-cream px-5 py-3 rounded-xl text-center border border-navy/5">
+                            <p class="text-2xl font-bold text-teal">Top 1%</p>
+                            <p class="text-xs text-navy/50">Invisalign Provider</p>
+                        </div>
+                        <div class="bg-cream px-5 py-3 rounded-xl text-center border border-navy/5">
+                            <p class="text-2xl font-bold text-teal">5.0</p>
+                            <p class="text-xs text-navy/50">Google Rating</p>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 2 -->
-                <div class="relative group rounded-3xl overflow-hidden shadow-soft reveal reveal-delay-2">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop" alt="Smile transformation 2" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/90 via-brand-primary/20 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 left-6 right-6 text-white">
-                        <span class="px-3 py-1 bg-brand-secondary rounded-full text-xs font-bold mb-2 inline-block">Clear Braces</span>
-                        <h4 class="text-xl font-bold">Overbite Correction</h4>
-                        <p class="text-sm text-white/80">18 Months Treatment</p>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 3 -->
-                <div class="relative group rounded-3xl overflow-hidden shadow-soft reveal reveal-delay-3">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Smile transformation 3" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/90 via-brand-primary/20 to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 left-6 right-6 text-white">
-                        <span class="px-3 py-1 bg-brand-secondary rounded-full text-xs font-bold mb-2 inline-block">Invisalign Teen</span>
-                        <h4 class="text-xl font-bold">Spacing & Alignment</h4>
-                        <p class="text-sm text-white/80">9 Months Treatment</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-8 text-center md:hidden">
-                <a href="#contact" class="inline-block px-8 py-4 font-bold text-white bg-brand-primary rounded-xl shadow-soft">
-                    Start Your Journey 📸
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- 5. Testimonial Marquee -->
-    <section id="testimonials" class="py-24 overflow-hidden bg-brand-ultralight border-y border-brand-light">
-        <div class="text-center mb-12 reveal">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Loved by Princeton ❤️</h2>
+    <!-- Reviews - horizontal scroll cards -->
+    <section id="reviews" class="py-24 bg-navy">
+        <div class="max-w-7xl mx-auto px-6 mb-12 reveal">
+            <p class="text-teal font-semibold tracking-wider uppercase text-sm mb-3">Patient Reviews</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Aligned and Happy</h2>
         </div>
-        
-        <div class="marquee-wrapper w-full reveal reveal-delay-1">
-            <div class="marquee-content gap-6 px-3">
-                
-                <!-- Repeat set 1 -->
-                <div class="glass-card w-[350px] flex-shrink-0 p-8 rounded-3xl shadow-sm">
-                    <div class="text-brand-secondary text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                    <p class="text-brand-primary font-medium mb-6">"Absolutely incredible experience. The technology they use made scanning a breeze (no gooey impressions!), and my Invisalign tracked perfectly."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center font-bold">S</div>
-                        <div>
-                            <div class="font-bold text-sm">Sarah Jenkins</div>
-                            <div class="text-xs text-brand-primary/60">Adult Invisalign</div>
-                        </div>
-                    </div>
+        <div class="snap-x-container flex gap-6 px-6 pb-4 reveal">
+            <div class="snap-item w-[340px] bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 flex-shrink-0">
+                <div class="flex items-center gap-1 text-teal mb-4">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 </div>
-
-                <div class="glass-card w-[350px] flex-shrink-0 p-8 rounded-3xl shadow-sm">
-                    <div class="text-brand-secondary text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                    <p class="text-brand-primary font-medium mb-6">"Align Orthodontics is the best in NJ. Ultra-modern clinic, super friendly staff, and they cut my estimated treatment time by 4 months!"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center font-bold">M</div>
-                        <div>
-                            <div class="font-bold text-sm">Mike T.</div>
-                            <div class="text-xs text-brand-primary/60">Accelerated Braces</div>
-                        </div>
-                    </div>
+                <p class="text-gray-300 font-light leading-relaxed mb-6">"Nobody at work noticed I was wearing aligners until I told them my teeth were done. Dr. Sharma is incredible."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-teal/20 flex items-center justify-center font-bold text-teal text-sm">KN</div>
+                    <div><p class="text-sm font-semibold text-white">Karen N.</p><p class="text-xs text-gray-500">Invisalign Patient</p></div>
                 </div>
-
-                <div class="glass-card w-[350px] flex-shrink-0 p-8 rounded-3xl shadow-sm">
-                    <div class="text-brand-secondary text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                    <p class="text-brand-primary font-medium mb-6">"My teenage daughter actually looked forward to her appointments. The vibe is so energetic and bright. Her smile is absolutely flawless now."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center font-bold">E</div>
-                        <div>
-                            <div class="font-bold text-sm">Elena R.</div>
-                            <div class="text-xs text-brand-primary/60">Teen Parent</div>
-                        </div>
-                    </div>
+            </div>
+            <div class="snap-item w-[340px] bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 flex-shrink-0">
+                <div class="flex items-center gap-1 text-teal mb-4">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 </div>
-
-                <!-- Repeat set 2 for seamless loop -->
-                <div class="glass-card w-[350px] flex-shrink-0 p-8 rounded-3xl shadow-sm">
-                    <div class="text-brand-secondary text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                    <p class="text-brand-primary font-medium mb-6">"Absolutely incredible experience. The technology they use made scanning a breeze (no gooey impressions!), and my Invisalign tracked perfectly."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center font-bold">S</div>
-                        <div>
-                            <div class="font-bold text-sm">Sarah Jenkins</div>
-                            <div class="text-xs text-brand-primary/60">Adult Invisalign</div>
-                        </div>
-                    </div>
+                <p class="text-gray-300 font-light leading-relaxed mb-6">"My teen finished Invisalign in 14 months instead of the 18 we were told elsewhere. The app check-ins made it so convenient."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-teal/20 flex items-center justify-center font-bold text-teal text-sm">LB</div>
+                    <div><p class="text-sm font-semibold text-white">Lisa B.</p><p class="text-xs text-gray-500">Parent of Teen Patient</p></div>
                 </div>
-
-                <div class="glass-card w-[350px] flex-shrink-0 p-8 rounded-3xl shadow-sm">
-                    <div class="text-brand-secondary text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                    <p class="text-brand-primary font-medium mb-6">"Align Orthodontics is the best in NJ. Ultra-modern clinic, super friendly staff, and they cut my estimated treatment time by 4 months!"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center font-bold">M</div>
-                        <div>
-                            <div class="font-bold text-sm">Mike T.</div>
-                            <div class="text-xs text-brand-primary/60">Accelerated Braces</div>
-                        </div>
-                    </div>
+            </div>
+            <div class="snap-item w-[340px] bg-white/5 backdrop-blur-lg rounded-2xl p-8 border border-white/10 flex-shrink-0">
+                <div class="flex items-center gap-1 text-teal mb-4">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                 </div>
-
-                <div class="glass-card w-[350px] flex-shrink-0 p-8 rounded-3xl shadow-sm">
-                    <div class="text-brand-secondary text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                    <p class="text-brand-primary font-medium mb-6">"My teenage daughter actually looked forward to her appointments. The vibe is so energetic and bright. Her smile is absolutely flawless now."</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center font-bold">E</div>
-                        <div>
-                            <div class="font-bold text-sm">Elena R.</div>
-                            <div class="text-xs text-brand-primary/60">Teen Parent</div>
-                        </div>
-                    </div>
+                <p class="text-gray-300 font-light leading-relaxed mb-6">"I chose Align for clear braces as an adult. The ceramic brackets were nearly invisible and Dr. Sharma was incredibly detail-oriented."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-teal/20 flex items-center justify-center font-bold text-teal text-sm">JM</div>
+                    <div><p class="text-sm font-semibold text-white">Jason M.</p><p class="text-xs text-gray-500">Clear Braces Patient</p></div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 6. Booking & Contact Form -->
-    <section id="contact" class="py-24">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="glass-dark rounded-[2.5rem] p-2 md:p-4 overflow-hidden shadow-2xl reveal">
-                <div class="flex flex-col lg:flex-row bg-white rounded-[2rem] overflow-hidden">
-                    
-                    <!-- Form Side -->
-                    <div class="w-full lg:w-3/5 p-8 md:p-12">
-                        <h2 class="text-4xl font-extrabold mb-2 text-brand-primary">Ready to smile? 😁</h2>
-                        <p class="text-brand-primary/70 mb-8 font-medium">Book your complimentary 3D scan & consultation today.</p>
-                        
-                        <form id="bookingForm" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-bold text-brand-primary mb-2">First Name</label>
-                                    <input type="text" required class="w-full px-4 py-3 bg-brand-ultralight border border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-secondary transition-all" placeholder="Jane">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-brand-primary mb-2">Last Name</label>
-                                    <input type="text" required class="w-full px-4 py-3 bg-brand-ultralight border border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-secondary transition-all" placeholder="Doe">
-                                </div>
-                            </div>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-bold text-brand-primary mb-2">Email Address</label>
-                                    <input type="email" required class="w-full px-4 py-3 bg-brand-ultralight border border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-secondary transition-all" placeholder="jane@example.com">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-brand-primary mb-2">Phone Number</label>
-                                    <input type="tel" required class="w-full px-4 py-3 bg-brand-ultralight border border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-secondary transition-all" placeholder="(609) 555-0123">
-                                </div>
-                            </div>
-
+    <!-- Contact / Booking -->
+    <section id="contact" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row border border-navy/5 reveal">
+                <div class="p-8 lg:p-12 lg:w-3/5">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-navy mb-2">Start Your Free Consultation</h3>
+                    <p class="text-navy/60 mb-8">Fill out the form and we will schedule your complimentary orthodontic evaluation.</p>
+                    <form onsubmit="event.preventDefault(); alert('Thank you! We will reach out to confirm your consultation.');" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
                             <div>
-                                <label class="block text-sm font-bold text-brand-primary mb-2">Treatment Interest</label>
-                                <select class="w-full px-4 py-3 bg-brand-ultralight border border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-secondary transition-all appearance-none">
-                                    <option>Invisalign (Adult)</option>
-                                    <option>Invisalign (Teen)</option>
-                                    <option>Traditional/Clear Braces</option>
-                                    <option>Not Sure - Need Consultation</option>
+                                <label class="block text-sm font-semibold text-navy mb-1.5">Full Name</label>
+                                <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-3 rounded-xl border border-navy/10 focus:outline-none focus:ring-2 focus:ring-teal/40">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-navy mb-1.5">Phone</label>
+                                <input type="tel" required placeholder="(856) 555-0100" class="w-full px-4 py-3 rounded-xl border border-navy/10 focus:outline-none focus:ring-2 focus:ring-teal/40">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-sm font-semibold text-navy mb-1.5">Patient Age</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-navy/10 focus:outline-none focus:ring-2 focus:ring-teal/40 text-navy/70">
+                                    <option>Child (7-12)</option>
+                                    <option>Teen (13-17)</option>
+                                    <option>Adult (18+)</option>
                                 </select>
                             </div>
-
-                            <button type="submit" class="w-full py-4 bg-brand-primary hover:bg-brand-secondary text-white font-bold rounded-xl shadow-md transition-colors text-lg">
-                                Secure My Spot 📅
-                            </button>
-                            <p class="text-center text-xs text-brand-primary/50 mt-4">By booking, you agree to our privacy policy. No commitment required.</p>
-                        </form>
-                    </div>
-
-                    <!-- Contact Info Side -->
-                    <div class="w-full lg:w-2/5 relative bg-brand-primary text-white p-8 md:p-12 overflow-hidden flex flex-col justify-between">
-                        <!-- BG Image Overlay -->
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay" alt="Clinic interior">
-                        
-                        <div class="relative z-10">
-                            <h3 class="text-2xl font-bold mb-8">Clinic Details</h3>
-                            
-                            <div class="space-y-6">
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm shrink-0">📍</div>
-                                    <div>
-                                        <div class="font-bold text-lg">Align Orthodontics</div>
-                                        <p class="text-white/80 leading-relaxed">100 Nassau Street, Suite 200<br>Princeton, NJ 08542</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm shrink-0">📞</div>
-                                    <div>
-                                        <div class="font-bold text-lg">(609) 555-SMILE</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-xl backdrop-blur-sm shrink-0">✉️</div>
-                                    <div>
-                                        <div class="font-bold text-lg">hello@alignorthonj.com</div>
-                                    </div>
-                                </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-navy mb-1.5">Treatment Interest</label>
+                                <select class="w-full px-4 py-3 rounded-xl border border-navy/10 focus:outline-none focus:ring-2 focus:ring-teal/40 text-navy/70">
+                                    <option>Invisalign</option>
+                                    <option>Clear Braces</option>
+                                    <option>Traditional Braces</option>
+                                    <option>Not Sure Yet</option>
+                                </select>
                             </div>
                         </div>
-
-                        <div class="relative z-10 mt-12 bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
-                            <div class="font-bold mb-2 flex items-center gap-2">🕒 Hours</div>
-                            <ul class="text-sm text-white/80 space-y-2">
-                                <li class="flex justify-between"><span>Mon - Thu:</span> <span>8:00 AM - 6:00 PM</span></li>
-                                <li class="flex justify-between"><span>Friday:</span> <span>8:00 AM - 2:00 PM</span></li>
-                                <li class="flex justify-between"><span>Sat - Sun:</span> <span>Closed</span></li>
-                            </ul>
+                        <div>
+                            <label class="block text-sm font-semibold text-navy mb-1.5">Anything we should know?</label>
+                            <textarea rows="3" placeholder="Previous orthodontic work, specific concerns..." class="w-full px-4 py-3 rounded-xl border border-navy/10 focus:outline-none focus:ring-2 focus:ring-teal/40 resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-navy hover:bg-teal text-white font-bold py-4 rounded-xl shadow-md transition-all hover:-translate-y-0.5">
+                            Request Free Consultation
+                        </button>
+                    </form>
+                </div>
+                <div class="bg-navy p-8 lg:p-12 lg:w-2/5 text-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-6">Visit Us</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <svg class="w-5 h-5 text-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <div>
+                                <p class="text-teal font-semibold text-sm">Location</p>
+                                <p class="text-white/70 text-sm mt-1">901 Route 73 South, Suite 140<br>Marlton, NJ 08053</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <svg class="w-5 h-5 text-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            <div>
+                                <p class="text-teal font-semibold text-sm">Phone</p>
+                                <p class="text-white/70 text-sm mt-1">(856) 555-0145</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <svg class="w-5 h-5 text-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <div>
+                                <p class="text-teal font-semibold text-sm">Email</p>
+                                <p class="text-white/70 text-sm mt-1">smile@alignorthodontics.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <svg class="w-5 h-5 text-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <div>
+                                <p class="text-teal font-semibold text-sm">Hours</p>
+                                <p class="text-white/70 text-sm mt-1">Mon, Wed, Fri: 8am - 5pm<br>Tue, Thu: 10am - 7pm<br>Sat: 9am - 1pm (by appt)</p>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 8. Footer -->
-    <footer class="bg-brand-primary text-white py-12 mt-12 border-t border-brand-secondary/30">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div class="col-span-1 md:col-span-2">
-                    <a href="#" class="flex items-center gap-2 mb-4">
-                        <span class="text-3xl">✨</span>
-                        <span class="text-2xl font-black tracking-tight">Align<span class="text-brand-secondary">Orthodontics</span></span>
+    <!-- Footer -->
+    <footer class="bg-navy pt-16 pb-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2 space-y-4">
+                    <a href="#" class="flex items-center gap-2">
+                        <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                        <span class="text-xl font-bold text-white">ALIGN <span class="text-teal font-light">Orthodontics</span></span>
                     </a>
-                    <p class="text-brand-light/70 text-sm max-w-sm">
-                        Princeton's ultra-premium, tech-forward orthodontic clinic. Specializing in Invisalign, accelerated treatments, and modern aesthetics.
-                    </p>
+                    <p class="text-slate text-sm max-w-sm leading-relaxed">Marlton's premier orthodontic practice. Invisalign Diamond+ Provider delivering technology-driven, comfortable treatment for patients of all ages.</p>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold mb-4 text-brand-secondary">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-brand-light/70">
-                        <li><a href="#services" class="hover:text-white transition-colors">Our Services</a></li>
-                        <li><a href="#gallery" class="hover:text-white transition-colors">Smile Gallery</a></li>
-                        <li><a href="#testimonials" class="hover:text-white transition-colors">Patient Reviews</a></li>
-                        <li><a href="#contact" class="hover:text-white transition-colors">Book Consultation</a></li>
+                    <h4 class="text-white font-semibold mb-5 text-sm tracking-wider uppercase">Quick Links</h4>
+                    <ul class="space-y-2.5 text-sm text-slate">
+                        <li><a href="#treatments" class="hover:text-teal transition-colors">Treatments</a></li>
+                        <li><a href="#about" class="hover:text-teal transition-colors">About Dr. Sharma</a></li>
+                        <li><a href="#reviews" class="hover:text-teal transition-colors">Patient Reviews</a></li>
+                        <li><a href="#contact" class="hover:text-teal transition-colors">Free Consultation</a></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold mb-4 text-brand-secondary">Social</h4>
-                    <div class="flex gap-4 text-2xl">
-                        <a href="#" class="hover:-translate-y-1 transition-transform" aria-label="Instagram">📸</a>
-                        <a href="#" class="hover:-translate-y-1 transition-transform" aria-label="TikTok">🎵</a>
-                        <a href="#" class="hover:-translate-y-1 transition-transform" aria-label="Facebook">📘</a>
-                    </div>
+                    <h4 class="text-white font-semibold mb-5 text-sm tracking-wider uppercase">Legal</h4>
+                    <ul class="space-y-2.5 text-sm text-slate">
+                        <li><a href="#" class="hover:text-teal transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-teal transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-teal transition-colors">Accessibility</a></li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-light/50">
-                <p>&copy; 2026 Align Orthodontics Princeton. All rights reserved.</p>
-                <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Terms of Service</a>
-                </div>
+            <div class="pt-8 border-t border-white/10 text-center text-sm text-slate">
+                &copy; <span id="yr"></span> Align Orthodontics. All rights reserved. Marlton, NJ.
             </div>
         </div>
     </footer>
 
-    <!-- 7. Floating Chat FAB -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
-        <!-- Chat Window (Hidden by default) -->
-        <div id="chatWindow" class="hidden glass-nav w-72 p-5 rounded-2xl shadow-2xl border border-brand-light transform transition-all origin-bottom-right">
-            <div class="flex justify-between items-center mb-3">
-                <div class="font-bold flex items-center gap-2"><span class="text-xl">👩‍⚕️</span> Dr. Sarah</div>
-                <button id="closeChat" class="text-brand-primary/50 hover:text-brand-primary font-bold">&times;</button>
-            </div>
-            <div class="bg-brand-ultralight p-3 rounded-xl text-sm text-brand-primary mb-3">
-                Hi there! 👋 How can we help you achieve your dream smile today?
-            </div>
-            <a href="#contact" id="chatToBook" class="block w-full text-center bg-brand-secondary hover:bg-brand-accent text-white font-bold py-2 rounded-lg text-sm transition-colors">
-                Book Free Consult
-            </a>
-        </div>
-        
-        <!-- FAB Button -->
-        <button id="chatFab" class="w-14 h-14 bg-gradient-to-tr from-brand-primary to-brand-secondary rounded-full shadow-glow flex items-center justify-center text-2xl hover:scale-110 transition-transform focus:outline-none">
-            💬
-        </button>
-    </div>
+    <button onclick="alert('Starting chat...')" class="fixed bottom-6 right-6 w-14 h-14 bg-teal text-navy rounded-full shadow-lg shadow-teal/30 flex items-center justify-center hover:scale-110 hover:bg-teal-dark hover:text-white transition-all duration-300 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+    </button>
 
-    <!-- Vanilla JS Logic -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. Scroll-Reveal via IntersectionObserver
-            const revealElements = document.querySelectorAll('.reveal');
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
-
-            revealElements.forEach(el => revealOnScroll.observe(el));
-
-            // 2. Sticky Nav effect on scroll
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('py-2', 'shadow-md');
-                    navbar.classList.remove('py-4');
-                } else {
-                    navbar.classList.add('py-4');
-                    navbar.classList.remove('py-2', 'shadow-md');
-                }
-            });
-
-            // 3. Prevent form default for demo
-            const bookingForm = document.getElementById('bookingForm');
-            if(bookingForm) {
-                bookingForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const btn = bookingForm.querySelector('button[type="submit"]');
-                    const originalText = btn.innerHTML;
-                    btn.innerHTML = 'Booking Confirmed! 🎉';
-                    btn.classList.add('bg-green-500');
-                    btn.classList.remove('bg-brand-primary', 'hover:bg-brand-secondary');
-                    
-                    setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.classList.remove('bg-green-500');
-                        btn.classList.add('bg-brand-primary', 'hover:bg-brand-secondary');
-                        bookingForm.reset();
-                    }, 3000);
-                });
-            }
-
-            // 4. Chat FAB Toggle
-            const chatFab = document.getElementById('chatFab');
-            const chatWindow = document.getElementById('chatWindow');
-            const closeChat = document.getElementById('closeChat');
-            const chatToBook = document.getElementById('chatToBook');
-
-            function toggleChat() {
-                if(chatWindow.classList.contains('hidden')) {
-                    chatWindow.classList.remove('hidden');
-                    // Add slight delay for animation effect
-                    setTimeout(() => {
-                        chatWindow.style.opacity = '1';
-                        chatWindow.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    chatWindow.classList.add('hidden');
-                }
-            }
-
-            chatFab.addEventListener('click', toggleChat);
-            closeChat.addEventListener('click', toggleChat);
-            chatToBook.addEventListener('click', () => {
-                toggleChat();
-            });
-
-            // Smooth scroll adjustment for fixed header
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
-                    
-                    const targetEl = document.querySelector(targetId);
-                    if(targetEl) {
-                        e.preventDefault();
-                        const headerOffset = 100;
-                        const elementPosition = targetEl.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
-                    }
-                });
-            });
-        });
+        document.getElementById('yr').textContent = new Date().getFullYear();
+        const mb = document.getElementById('mob-btn'), mm = document.getElementById('mob-menu');
+        const ib = document.getElementById('ico-bars'), ix = document.getElementById('ico-x');
+        mb.addEventListener('click', () => { mm.classList.toggle('hidden'); ib.classList.toggle('hidden'); ix.classList.toggle('hidden'); });
+        document.querySelectorAll('.mob-lnk').forEach(l => l.addEventListener('click', () => { mm.classList.add('hidden'); ib.classList.remove('hidden'); ix.classList.add('hidden'); }));
+        const ro = new IntersectionObserver((es,o) => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('active');o.unobserve(e.target);} }), {threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
     </script>
 </body>
 </html>
