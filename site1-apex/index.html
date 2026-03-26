@@ -1,471 +1,591 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex Dental Studio | Modern Dentistry, Pain-Free Experience</title>
-  <meta name="description" content="Philadelphia's premier general and cosmetic dental practice. Pain-free dentistry with cutting-edge technology. Now accepting new patients.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: '#0a192f',
-            'navy-light': '#112240',
-            teal: '#14b8a6',
-            'teal-dark': '#0d9488',
-            surface: '#f0fdfa',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-  <style>
-    * { font-family: 'Inter', system-ui, sans-serif; }
-    .glass { background: rgba(10,25,47,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-    @keyframes countUp { from { opacity:0; transform:scale(0.5); } to { opacity:1; transform:scale(1); } }
-    .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    [data-reveal] { opacity:0; transform:translateY(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
-    [data-reveal].visible { opacity:1; transform:translateY(0); }
-    .card-lift { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
-    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(20,184,166,0.12); }
-    .gradient-border { position: relative; }
-    .gradient-border::before { content:''; position:absolute; inset:-2px; border-radius:inherit; padding:2px; background:linear-gradient(135deg,#14b8a6,#0a192f); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; }
-    .hamburger span { display:block; width:24px; height:2px; background:#fff; margin:5px 0; transition:all 0.3s; border-radius:2px; }
-    .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-    .hamburger.active span:nth-child(2) { opacity:0; }
-    .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Dental Studio | Premium Dentistry in Philadelphia, PA</title>
+    <meta name="description" content="Modern, pain-free dentistry at Apex Dental Studio in Philadelphia, PA. Book your appointment today.">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F172A',
+                        secondary: '#14B8A6',
+                        gold: '#FBBF24',
+                        surface: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans:['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS & Animations -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Marquee Animation */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            position: relative;
+        }
+        
+        /* Gradient mask for marquee */
+        .marquee-container::before,
+        .marquee-container::after {
+            position: absolute;
+            top: 0;
+            width: 15%;
+            height: 100%;
+            content: "";
+            z-index: 2;
+        }
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(to right, #FAFAFA, transparent);
+        }
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(to left, #FAFAFA, transparent);
+        }
+
+        .marquee-content {
+            display: inline-flex;
+            animation: marquee 25s linear infinite;
+        }
+        
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Image hover zoom */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom {
+            transition: transform 0.7s ease;
+        }
+        .img-zoom-container:hover .img-zoom {
+            transform: scale(1.05);
+        }
+
+        /* FAB Bounce */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .fab {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
 </head>
-<body class="font-sans text-gray-800 bg-white antialiased">
+<body class="text-slate-800 antialiased selection:bg-secondary selection:text-white">
 
-  <!-- Nav -->
-  <nav class="glass fixed top-0 w-full z-50 border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-      <a href="#" class="text-xl sm:text-2xl font-bold text-white">Apex<span class="text-teal">Dental</span></a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-sm font-medium text-gray-300 hover:text-teal transition">Services</a>
-        <a href="#about" class="text-sm font-medium text-gray-300 hover:text-teal transition">About</a>
-        <a href="#reviews" class="text-sm font-medium text-gray-300 hover:text-teal transition">Reviews</a>
-        <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-teal transition">Contact</a>
-      </div>
-      <div class="flex items-center gap-3">
-        <a href="tel:+12154837200" class="hidden lg:block text-sm font-medium text-gray-300 hover:text-teal transition">(215) 483-7200</a>
-        <a href="#contact" class="hidden sm:inline-block bg-teal text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-teal-dark transition">Book Now</a>
-        <button class="hamburger md:hidden flex flex-col justify-center" onclick="this.classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('hidden')">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-4 pb-4">
-      <a href="#services" class="block py-3 text-sm text-gray-300 hover:text-teal transition">Services</a>
-      <a href="#about" class="block py-3 text-sm text-gray-300 hover:text-teal transition">About</a>
-      <a href="#reviews" class="block py-3 text-sm text-gray-300 hover:text-teal transition">Reviews</a>
-      <a href="#contact" class="block py-3 text-sm text-gray-300 hover:text-teal transition">Contact</a>
-      <a href="tel:+12154837200" class="block py-3 text-sm text-teal font-medium">(215) 483-7200</a>
-      <a href="#contact" class="block mt-2 bg-teal text-white px-5 py-3 rounded-lg text-sm font-semibold text-center hover:bg-teal-dark transition">Book Now</a>
-    </div>
-  </nav>
+    <!-- 1) Sticky Glassmorphic Nav -->
+    <nav class="fixed w-full top-0 z-50 glass shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <span class="text-3xl group-hover:scale-110 transition-transform duration-300"></span>
+                    <span class="font-bold text-xl tracking-tight text-primary">Apex Dental<br><span class="text-secondary text-sm font-semibold tracking-widest uppercase block mt-[-4px]">Studio</span></span>
+                </a>
 
-  <!-- Hero -->
-  <section class="relative min-h-screen flex items-center bg-navy overflow-hidden">
-    <div class="absolute inset-0">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1920&q=80" alt="Modern dental clinic interior" class="w-full h-full object-cover opacity-15">
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-br from-navy via-navy/95 to-navy-light/90"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20 lg:pt-32 lg:pb-24">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
-          <div class="animate-fade-up inline-flex items-center gap-2 bg-teal/10 border border-teal/20 rounded-full px-4 py-1.5 mb-6">
-            <span class="w-2 h-2 bg-teal rounded-full animate-pulse"></span>
-            <span class="text-teal text-sm font-medium">Now Accepting New Patients</span>
-          </div>
-          <h1 class="animate-fade-up delay-100 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] mb-6">
-            Modern Dentistry.<br><span class="text-teal">Pain-Free</span> Experience.
-          </h1>
-          <p class="animate-fade-up delay-200 text-lg sm:text-xl text-gray-400 mb-8 max-w-lg leading-relaxed">
-            Experience world-class dental care with cutting-edge technology and a compassionate team dedicated to your comfort.
-          </p>
-          <div class="animate-fade-up delay-300 flex flex-wrap gap-4">
-            <a href="#contact" class="bg-teal text-white px-7 py-3.5 rounded-xl font-semibold text-base hover:bg-teal-dark transition shadow-lg shadow-teal/20">
-              Book Free Consultation
-            </a>
-            <a href="#services" class="border-2 border-white/20 text-white px-7 py-3.5 rounded-xl font-semibold text-base hover:bg-white/5 transition">
-              Our Services
-            </a>
-          </div>
-        </div>
-        <!-- Stats Column -->
-        <div class="animate-fade-up delay-400 grid grid-cols-2 gap-4 sm:gap-6">
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 text-center backdrop-blur-sm">
-            <p class="text-3xl sm:text-4xl font-extrabold text-teal mb-2">15+</p>
-            <p class="text-sm text-gray-400">Years of Excellence</p>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 text-center backdrop-blur-sm">
-            <p class="text-3xl sm:text-4xl font-extrabold text-teal mb-2">12K+</p>
-            <p class="text-sm text-gray-400">Happy Patients</p>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 text-center backdrop-blur-sm">
-            <p class="text-3xl sm:text-4xl font-extrabold text-teal mb-2">4.9</p>
-            <p class="text-sm text-gray-400">Google Rating</p>
-          </div>
-          <div class="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 text-center backdrop-blur-sm">
-            <p class="text-3xl sm:text-4xl font-extrabold text-teal mb-2">500+</p>
-            <p class="text-sm text-gray-400">5-Star Reviews</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-sm font-medium text-slate-600 hover:text-secondary transition-colors">Services</a>
+                    <a href="#gallery" class="text-sm font-medium text-slate-600 hover:text-secondary transition-colors">Gallery</a>
+                    <a href="#reviews" class="text-sm font-medium text-slate-600 hover:text-secondary transition-colors">Reviews</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-secondary transition-colors">Contact</a>
+                </div>
 
-  <!-- Services -->
-  <section id="services" class="py-20 lg:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">What We Do</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">Comprehensive Dental Care</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">From routine checkups to complete smile transformations, all under one roof with a team that truly cares.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" data-reveal>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">General Dentistry</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Exams, cleanings, fillings, and preventive care for the whole family.</p>
-        </div>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Cosmetic Dentistry</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Veneers, whitening, and smile design for the confidence you deserve.</p>
-        </div>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Invisalign</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Clear aligners that straighten your teeth discreetly and comfortably.</p>
-        </div>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Dental Implants</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Permanent, natural-looking tooth replacement with state-of-the-art technology.</p>
-        </div>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6" data-reveal>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Emergency Care</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Same-day appointments for toothaches, broken teeth, and urgent needs.</p>
-        </div>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Sedation Options</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Anxiety-free dentistry with nitrous oxide and oral sedation options.</p>
-        </div>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Root Canals</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Pain-free root canal treatment using advanced rotary technology.</p>
-        </div>
-        <div class="bg-surface rounded-2xl p-7 card-lift border border-teal/10">
-          <div class="w-12 h-12 bg-teal/10 rounded-xl flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-          </div>
-          <h3 class="text-lg font-bold text-navy mb-2">Teeth Whitening</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Professional-grade whitening for dramatically brighter results in one visit.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+                <!-- CTA Button -->
+                <div class="hidden md:flex">
+                    <a href="#booking" class="bg-primary hover:bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg shadow-primary/30 transition-all hover:-translate-y-0.5 active:translate-y-0">
+                        Book Appointment 🗓️
+                    </a>
+                </div>
 
-  <!-- About / Team -->
-  <section id="about" class="py-20 lg:py-28 bg-navy">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20" data-reveal>
-        <div>
-          <span class="text-teal font-semibold text-sm uppercase tracking-wider">About Apex Dental</span>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3 mb-6">Where Technology Meets Compassion</h2>
-          <p class="text-gray-400 text-lg leading-relaxed mb-6">
-            Founded in 2011, Apex Dental Studio has been serving Philadelphia's dental needs with a commitment to exceptional care. Our practice combines the latest digital technology with a warm, patient-first approach.
-          </p>
-          <p class="text-gray-400 leading-relaxed mb-8">
-            We believe everyone deserves a healthy, beautiful smile. That is why we offer flexible financing, accept most insurance plans, and provide transparent pricing for every procedure.
-          </p>
-          <div class="flex flex-wrap gap-6">
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-primary text-2xl focus:outline-none">
+                        🍔
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-secondary hover:bg-slate-50 rounded-xl">Services</a>
+                <a href="#gallery" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-secondary hover:bg-slate-50 rounded-xl">Gallery</a>
+                <a href="#reviews" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-secondary hover:bg-slate-50 rounded-xl">Reviews</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-secondary hover:bg-slate-50 rounded-xl">Contact</a>
+                <a href="#booking" class="block px-3 py-3 mt-4 text-center text-base font-semibold bg-primary text-white rounded-xl shadow-md">Book Appointment 🗓️</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2) Full-Screen Hero -->
+    <section class="relative pt-28 pb-20 lg:pt-40 lg:pb-28 min-h-[90vh] flex items-center bg-surface overflow-hidden">
+        <!-- Abstract Background shapes -->
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-[-10%] right-[-5%] w-[30rem] h-[30rem] bg-primary/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <!-- Text Content -->
+                <div class="max-w-2xl reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-slate-100 mb-6">
+                        <span class="text-gold text-sm">⭐⭐⭐⭐⭐</span>
+                        <span class="text-xs font-semibold text-slate-600 tracking-wide uppercase">5.0 (500+ Reviews)</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-extrabold text-primary leading-[1.1] mb-6 tracking-tight">
+                        Modern Dentistry,<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-teal-400">Pain-Free Experience</span>
+                    </h1>
+                    <p class="text-lg text-slate-500 mb-8 leading-relaxed max-w-lg">
+                        Welcome to Apex Dental Studio in Philadelphia. We blend cutting-edge technology with luxurious comfort to give you the healthy, radiant smile you deserve.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#booking" class="inline-flex justify-center items-center bg-secondary hover:bg-teal-600 text-white px-8 py-4 rounded-full text-base font-semibold shadow-lg shadow-secondary/40 transition-all hover:-translate-y-1">
+                            Book Your Visit ✨
+                        </a>
+                        <a href="#services" class="inline-flex justify-center items-center bg-white hover:bg-slate-50 text-primary border border-slate-200 px-8 py-4 rounded-full text-base font-semibold shadow-sm transition-all hover:-translate-y-1">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative reveal reveal-delay-2 hidden sm:block">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-transparent rounded-[2.5rem] transform translate-x-4 translate-y-4"></div>
+                    <img src="dental-office.png" alt="Smiling Patient" class="relative z-10 w-full object-cover h-[500px] lg:h-[650px] rounded-[2.5rem] shadow-soft">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute bottom-10 -left-8 z-20 glass p-4 rounded-2xl shadow-xl flex items-center gap-4 animate-[float_4s_ease-in-out_infinite]">
+                        <div class="bg-green-100 p-3 rounded-full text-2xl">🏆</div>
+                        <div>
+                            <p class="text-sm font-bold text-primary">Award Winning</p>
+                            <p class="text-xs text-slate-500">Top Dentist in PA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) Services Grid -->
+    <section id="services" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Our Expertise</h2>
+                <h3 class="text-3xl md:text-5xl font-extrabold text-primary mb-4 tracking-tight">Comprehensive Dental Care</h3>
+                <p class="text-slate-500 text-lg">Everything you need for a perfect smile under one roof, utilizing state-of-the-art technology.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-surface p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-soft transition-all duration-300 hover:-translate-y-2 group reveal">
+                    <div class="text-5xl mb-6 bg-white w-20 h-20 flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-transform"></div>
+                    <h4 class="text-xl font-bold text-primary mb-3">General Dentistry</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Routine checkups, digital x-rays, and professional cleanings to keep your oral health in peak condition.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-surface p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-soft transition-all duration-300 hover:-translate-y-2 group reveal reveal-delay-1">
+                    <div class="text-5xl mb-6 bg-white w-20 h-20 flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-transform">✨</div>
+                    <h4 class="text-xl font-bold text-primary mb-3">Cosmetic Dentistry</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Transform your smile with premium porcelain veneers, teeth whitening, and complete smile makeovers.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-surface p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-soft transition-all duration-300 hover:-translate-y-2 group reveal reveal-delay-2">
+                    <div class="text-5xl mb-6 bg-white w-20 h-20 flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-transform">😃</div>
+                    <h4 class="text-xl font-bold text-primary mb-3">Invisalign®</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Discreet, clear aligners to straighten your teeth quickly and comfortably without traditional braces.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="bg-surface p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-soft transition-all duration-300 hover:-translate-y-2 group reveal reveal-delay-3">
+                    <div class="text-5xl mb-6 bg-white w-20 h-20 flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-transform">🔩</div>
+                    <h4 class="text-xl font-bold text-primary mb-3">Dental Implants</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed">Permanent, natural-looking tooth replacements that restore full function and aesthetics to your mouth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) Before/After Gallery -->
+    <section id="gallery" class="py-24 bg-primary text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div class="max-w-2xl">
+                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Real Results</h2>
+                    <h3 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight">Transformation Gallery</h3>
+                    <p class="text-slate-300 text-lg">See the life-changing impact of our aesthetic treatments.</p>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <a href="#booking" class="text-white border-b-2 border-secondary hover:text-secondary transition-colors pb-1 font-semibold">Start Your Transformation ➔</a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Gallery Item 1 -->
+                <div class="group relative rounded-[2rem] img-zoom-container bg-slate-800 reveal">
+                    <img src="https://images.unsplash.com/photo-1590664096924-f7b60098f484?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smile Before" class="w-full h-[400px] object-cover img-zoom opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute top-6 left-6 glass px-4 py-2 rounded-full text-slate-800 font-bold text-sm tracking-wide">
+                        📸 Routine Whitening
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="group relative rounded-[2rem] img-zoom-container bg-slate-800 reveal reveal-delay-1">
+                    <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smile After" class="w-full h-[400px] object-cover img-zoom opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="absolute top-6 left-6 glass px-4 py-2 rounded-full text-slate-800 font-bold text-sm tracking-wide">
+                        ✨ Full Veneers Makeover
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) Auto-scrolling Testimonial Marquee -->
+    <section id="reviews" class="py-24 bg-surface relative">
+        <div class="text-center mb-12 reveal">
+            <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Patient Love</h2>
+            <h3 class="text-3xl md:text-5xl font-extrabold text-primary tracking-tight">Don't Just Take Our Word For It</h3>
+        </div>
+
+        <div class="marquee-container py-8 reveal reveal-delay-1">
+            <div class="marquee-content">
+                <!-- Testimonial Cards (Duplicated for seamless loop) -->
+                <!-- Set 1 -->
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"Absolutely the best dentist in Philly! The clinic feels like a luxury spa, and the staff is incredibly gentle. Highly recommend!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-xl">👩🏼</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">Sarah Jenkins</p>
+                            <p class="text-xs text-slate-400">Invisalign Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"I've always had anxiety about the dentist, but Apex changed that. Truly a pain-free experience. My implants look perfectly natural."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-xl">👨🏽</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">Michael Rodriguez</p>
+                            <p class="text-xs text-slate-400">Implant Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"State-of-the-art tech and an amazing team. Got my veneers done here and my confidence is through the roof! Thank you Apex."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-xl">👩🏾</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">Jessica Taylor</p>
+                            <p class="text-xs text-slate-400">Cosmetic Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"Fast, efficient, and super clean. Booking was easy, and I didn't have to wait at all when I arrived for my cleaning."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center text-xl">👨🏻</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">David Chen</p>
+                            <p class="text-xs text-slate-400">General Checkup</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Set 2 (Exact Duplicate for loop) -->
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"Absolutely the best dentist in Philly! The clinic feels like a luxury spa, and the staff is incredibly gentle. Highly recommend!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-xl">👩🏼</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">Sarah Jenkins</p>
+                            <p class="text-xs text-slate-400">Invisalign Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"I've always had anxiety about the dentist, but Apex changed that. Truly a pain-free experience. My implants look perfectly natural."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-xl">👨🏽</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">Michael Rodriguez</p>
+                            <p class="text-xs text-slate-400">Implant Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"State-of-the-art tech and an amazing team. Got my veneers done here and my confidence is through the roof! Thank you Apex."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center text-xl">👩🏾</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">Jessica Taylor</p>
+                            <p class="text-xs text-slate-400">Cosmetic Patient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mx-4 w-[350px] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 whitespace-normal">
+                    <div class="text-gold mb-4 text-lg">⭐⭐⭐⭐⭐</div>
+                    <p class="text-slate-600 mb-6 italic">"Fast, efficient, and super clean. Booking was easy, and I didn't have to wait at all when I arrived for my cleaning."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center text-xl">👨🏻</div>
+                        <div>
+                            <p class="font-bold text-primary text-sm">David Chen</p>
+                            <p class="text-xs text-slate-400">General Checkup</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6) Booking Form & Side Panel -->
+    <section id="contact" class="py-24 bg-white">
+        <div id="booking" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-primary rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row reveal">
+                
+                <!-- Form Side -->
+                <div class="w-full lg:w-3/5 p-10 lg:p-16 bg-white">
+                    <h3 class="text-3xl font-extrabold text-primary mb-2 tracking-tight">Request an Appointment</h3>
+                    <p class="text-slate-500 mb-8">Fill out the form below and our team will get back to you shortly to confirm your slot.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Request sent! Our team will contact you shortly.');" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+                                <input type="text" required class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Phone Number</label>
+                                <input type="tel" required class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="(215) 555-0000">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Preferred Date</label>
+                                <input type="date" required class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-600">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Service of Interest</label>
+                                <select class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all text-slate-600 appearance-none">
+                                    <option>General Checkup & Cleaning</option>
+                                    <option>Cosmetic Dentistry</option>
+                                    <option>Invisalign Consultation</option>
+                                    <option>Dental Implants</option>
+                                    <option>Emergency Care</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Message (Optional)</label>
+                            <textarea rows="3" class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all" placeholder="Any specific concerns or questions?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-secondary hover:bg-teal-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-secondary/30 transition-all hover:-translate-y-1">
+                            Submit Request 🚀
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info Side -->
+                <div class="w-full lg:w-2/5 p-10 lg:p-16 text-white bg-[url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')] bg-cover bg-center relative">
+                    <div class="absolute inset-0 bg-primary/90 backdrop-blur-sm"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-xl flex-shrink-0">📍</div>
+                                    <div>
+                                        <h4 class="font-semibold text-secondary mb-1">Location</h4>
+                                        <p class="text-slate-300 text-sm leading-relaxed">Apex Dental Studio<br>123 Market Street, Suite 400<br>Philadelphia, PA 19106</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-xl flex-shrink-0">📞</div>
+                                    <div>
+                                        <h4 class="font-semibold text-secondary mb-1">Phone</h4>
+                                        <p class="text-slate-300 text-sm">(215) 555-0199</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-xl flex-shrink-0">🕒</div>
+                                    <div>
+                                        <h4 class="font-semibold text-secondary mb-1">Office Hours</h4>
+                                        <p class="text-slate-300 text-sm">Mon - Fri: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <p class="text-sm text-slate-400 italic">"Dedicated to delivering Philly's most comfortable dental experience."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7) Footer -->
+    <footer class="bg-primary text-slate-300 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-300 text-sm">Digital X-rays</span>
+                <span class="text-2xl"></span>
+                <span class="font-bold text-white tracking-tight">Apex Dental Studio</span>
             </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-300 text-sm">3D Scanning</span>
+            
+            <div class="flex gap-6 text-sm font-medium">
+                <a href="#services" class="hover:text-secondary transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-secondary transition-colors">Gallery</a>
+                <a href="#reviews" class="hover:text-secondary transition-colors">Reviews</a>
+                <a href="#contact" class="hover:text-secondary transition-colors">Contact</a>
             </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-300 text-sm">Laser Dentistry</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-300 text-sm">Same-Day Crowns</span>
-            </div>
-          </div>
-        </div>
-        <div class="relative">
-          <img src="dental-office.png" alt="Modern dental office" class="rounded-2xl w-full object-cover h-[400px]">
-          <div class="absolute -bottom-6 -left-6 bg-teal rounded-2xl p-6 shadow-xl hidden sm:block">
-            <p class="text-white font-bold text-2xl">15+</p>
-            <p class="text-white/80 text-sm">Years Serving Philly</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- Team -->
-      <div class="text-center mb-12" data-reveal>
-        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">Meet Your Care Team</h3>
-        <p class="text-gray-400 max-w-xl mx-auto">Every member of our team is dedicated to making your visit comfortable and your results exceptional.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal>
-        <div class="text-center">
-          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal/30 to-navy-light flex items-center justify-center border-2 border-teal/20">
-            <span class="text-4xl font-bold text-teal">EM</span>
-          </div>
-          <h4 class="text-white font-bold text-lg">Dr. Elena Martinez, DDS</h4>
-          <p class="text-teal text-sm font-medium mb-2">Lead Dentist & Founder</p>
-          <p class="text-gray-400 text-sm">Penn Dental graduate with fellowship training in cosmetic dentistry. Passionate about creating natural-looking smile transformations.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal/30 to-navy-light flex items-center justify-center border-2 border-teal/20">
-            <span class="text-4xl font-bold text-teal">JC</span>
-          </div>
-          <h4 class="text-white font-bold text-lg">Dr. James Chen, DMD</h4>
-          <p class="text-teal text-sm font-medium mb-2">Associate Dentist</p>
-          <p class="text-gray-400 text-sm">Specializing in implant dentistry and full-mouth rehabilitation. Known for his gentle approach and attention to detail.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal/30 to-navy-light flex items-center justify-center border-2 border-teal/20">
-            <span class="text-4xl font-bold text-teal">SR</span>
-          </div>
-          <h4 class="text-white font-bold text-lg">Sarah Robinson, RDH</h4>
-          <p class="text-teal text-sm font-medium mb-2">Lead Hygienist</p>
-          <p class="text-gray-400 text-sm">20 years of experience making cleanings comfortable. Certified in laser therapy and periodontal maintenance.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews -->
-  <section id="reviews" class="py-20 lg:py-28 bg-surface">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Patient Reviews</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">What Our Patients Say</h2>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-lift">
-          <div class="flex gap-1 mb-4 text-teal">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">"Absolutely painless experience. Dr. Martinez and the team made me feel completely at ease. My new smile is incredible and I cannot stop looking in the mirror."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-navy rounded-full flex items-center justify-center text-teal font-bold text-sm">SR</div>
-            <div><p class="text-navy font-semibold text-sm">Sarah R.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-lift">
-          <div class="flex gap-1 mb-4 text-teal">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">"Best dental experience of my life. The technology they use is incredible -- my implants look and feel completely natural. Truly life-changing."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-navy rounded-full flex items-center justify-center text-teal font-bold text-sm">MK</div>
-            <div><p class="text-navy font-semibold text-sm">Michael K.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 card-lift">
-          <div class="flex gap-1 mb-4 text-teal">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">"I was terrified of the dentist for years. Apex Dental changed that completely. The sedation options and gentle approach made all the difference."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-navy rounded-full flex items-center justify-center text-teal font-bold text-sm">JT</div>
-            <div><p class="text-navy font-semibold text-sm">Jennifer T.</p><p class="text-gray-400 text-xs">Verified Patient</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-20 lg:py-28 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-16" data-reveal>
-        <span class="text-teal font-semibold text-sm uppercase tracking-wider">Get Started</span>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-4">Book Your Visit</h2>
-        <p class="text-gray-500 text-lg max-w-2xl mx-auto">Schedule your appointment today and take the first step toward your best smile.</p>
-      </div>
-      <div class="grid lg:grid-cols-5 gap-10" data-reveal>
-        <div class="lg:col-span-3 bg-surface rounded-2xl p-8 sm:p-10 border border-teal/10">
-          <form class="space-y-5">
-            <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Full Name</label>
-                <input type="text" placeholder="John Smith" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm bg-white">
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Email</label>
-                <input type="email" placeholder="john@email.com" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm bg-white">
-              </div>
+            <div class="flex gap-4 text-xl">
+                <a href="#" class="hover:scale-110 transition-transform">📱</a>
+                <a href="#" class="hover:scale-110 transition-transform">📸</a>
+                <a href="#" class="hover:scale-110 transition-transform">🐦</a>
             </div>
-            <div class="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Phone</label>
-                <input type="tel" placeholder="(215) 555-0000" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm bg-white">
-              </div>
-              <div>
-                <label class="text-sm font-semibold text-navy mb-2 block">Preferred Date</label>
-                <input type="date" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm bg-white">
-              </div>
-            </div>
-            <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">Reason for Visit</label>
-              <select class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm bg-white text-gray-500">
-                <option>Select a service...</option>
-                <option>General Checkup & Cleaning</option>
-                <option>Cosmetic Consultation</option>
-                <option>Invisalign Evaluation</option>
-                <option>Dental Implants</option>
-                <option>Emergency Visit</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div>
-              <label class="text-sm font-semibold text-navy mb-2 block">Additional Notes</label>
-              <textarea rows="3" placeholder="Tell us about your needs..." class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition text-sm bg-white resize-none"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-teal text-white py-3.5 rounded-lg font-semibold text-base hover:bg-teal-dark transition shadow-lg shadow-teal/20">
-              Request Appointment
-            </button>
-          </form>
         </div>
-        <div class="lg:col-span-2 space-y-5">
-          <div class="bg-surface rounded-xl p-6 border border-teal/10">
-            <h3 class="font-bold text-navy text-base mb-3">Visit Us</h3>
-            <p class="text-gray-500 text-sm">1500 Market Street, Suite 320<br>Philadelphia, PA 19102</p>
-          </div>
-          <div class="bg-surface rounded-xl p-6 border border-teal/10">
-            <h3 class="font-bold text-navy text-base mb-3">Office Hours</h3>
-            <div class="space-y-2 text-sm text-gray-500">
-              <div class="flex justify-between"><span>Monday - Friday</span><span class="font-medium text-navy">8:00 AM - 6:00 PM</span></div>
-              <div class="flex justify-between"><span>Saturday</span><span class="font-medium text-navy">9:00 AM - 3:00 PM</span></div>
-              <div class="flex justify-between"><span>Sunday</span><span class="font-medium text-gray-400">Closed</span></div>
-            </div>
-          </div>
-          <div class="bg-surface rounded-xl p-6 border border-teal/10">
-            <h3 class="font-bold text-navy text-base mb-3">Contact</h3>
-            <p class="text-gray-500 text-sm">Phone: <a href="tel:+12154837200" class="text-teal hover:underline">(215) 483-7200</a><br>Email: hello@apexdentalstudio.com</p>
-          </div>
-          <div class="bg-navy rounded-xl p-6 text-center">
-            <p class="text-white font-semibold mb-2">Insurance Accepted</p>
-            <p class="text-gray-400 text-sm">We work with most major insurance plans. Contact us to verify your coverage.</p>
-          </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center text-xs text-slate-600">
+            &copy; 2026 Apex Dental Studio. All rights reserved. Made in Philadelphia, PA.
         </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="bg-navy text-gray-400 py-12 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-        <div>
-          <p class="text-white font-bold text-lg mb-3">Apex<span class="text-teal">Dental</span></p>
-          <p class="text-sm leading-relaxed">Philadelphia's premier dental experience. Modern technology, compassionate care.</p>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-3">Services</p>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#services" class="hover:text-teal transition">General Dentistry</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Cosmetic Dentistry</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Invisalign</a></li>
-            <li><a href="#services" class="hover:text-teal transition">Dental Implants</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-3">Quick Links</p>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#about" class="hover:text-teal transition">About Us</a></li>
-            <li><a href="#reviews" class="hover:text-teal transition">Reviews</a></li>
-            <li><a href="#contact" class="hover:text-teal transition">Contact</a></li>
-            <li><a href="#contact" class="hover:text-teal transition">Book Online</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-white font-semibold text-sm mb-3">Contact</p>
-          <ul class="space-y-2 text-sm">
-            <li>(215) 483-7200</li>
-            <li>hello@apexdentalstudio.com</li>
-            <li>1500 Market St, Suite 320<br>Philadelphia, PA 19102</li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-sm">&copy; 2026 Apex Dental Studio. All rights reserved.</p>
-        <div class="flex gap-6 text-sm">
-          <a href="#" class="hover:text-teal transition">Privacy Policy</a>
-          <a href="#" class="hover:text-teal transition">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <!-- 8) Floating Chat FAB -->
+    <button class="fixed bottom-6 right-6 w-16 h-16 bg-secondary text-white rounded-full shadow-2xl flex items-center justify-center text-3xl fab z-50 hover:bg-teal-400 transition-colors focus:outline-none" onclick="alert('Chat module initializing...')">
+        💬
+    </button>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    <!-- Vanilla JS for Interactions -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
-    // Close mobile menu on link click
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('mobileMenu').classList.add('hidden');
-        document.querySelector('.hamburger').classList.remove('active');
-      });
-    });
-  </script>
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                btn.innerHTML = '🍔';
+            } else {
+                btn.innerHTML = '✖️';
+            }
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                btn.innerHTML = '🍔';
+            });
+        });
+
+        // 2. Scroll Reveal Animation using IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Only animate once
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealOnScroll.observe(el);
+        });
+
+        // 3. Navbar Glass Effect on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+            }
+        });
+    </script>
 </body>
 </html>
